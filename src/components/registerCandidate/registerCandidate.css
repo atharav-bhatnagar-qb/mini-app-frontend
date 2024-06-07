@@ -1,0 +1,45 @@
+.register-cont{
+    @apply rounded-2xl flex bg-gray-100 w-[90%] min-w-[400px] max-w-[600px] flex flex-col items-center px-2 py-8;
+}
+.register-title{
+    @apply text-3xl text-black text-center font-semibold mb-8 w-full
+}
+.register-form-cont{
+    @apply flex flex-col items-center
+}
+.register-name-inp{
+    @apply mb-3 rounded-2xl py-2 px-2
+}
+.register-email-inp{
+    @apply mb-3 rounded-2xl py-2 px-2
+}
+.register-skill-cont{
+    @apply flex flex-col items-center w-full
+}
+.skill-num-cont{
+    @apply flex flex-wrap min-w-[200px] w-full justify-between items-center my-6
+}
+.skill-num-cont-title{
+    @apply text-xl text-black text-center font-semibold
+}
+.skill-num-dropdown{
+    @apply font-bold
+}
+.skill-num-op{
+    @apply font-semibold
+}
+.register-skill-list-cont{
+    @apply flex flex-col items-center w-full
+}
+.register-skill-item{
+    @apply mb-2 rounded-xl py-2 px-2
+}
+.register-apply-btn{
+    @apply bg-blue-400 rounded-2xl text-white text-lg font-semibold px-6 py-2 mt-4
+}
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+.main-cont{
+    @apply rounded-2xl flex bg-gray-100 w-[90%] min-w-[400px] max-w-[600px] flex flex-col items-start px-2 py-8;
+}
+.main-connect-btn{
+    @apply bg-blue-400 rounded-2xl text-white text-lg font-semibold px-6 py-2
+}
+.main-job-list{
+    @apply flex flex-col my-20 w-full items-center my-8 
+}
+.main-job-list-title{
+    @apply text-3xl text-black text-center font-semibold mb-8
+}
+.job-card-main{
+    @apply flex items-center justify-between mb-4 rounded-lg bg-white shadow-xl py-4 px-2 w-[90%] min-w-[300px]
+}
+.job-title-main{
+    @apply text-black text-lg font-medium
+}
+.job-redirect{
+    @apply cursor-pointer text-xl
+}

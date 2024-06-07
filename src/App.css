@@ -1,0 +1,7 @@
+body{
+  @apply min-h-screen min-w-[100vw] overflow-x-hidden;
+}
+
+.page{
+  @apply w-screen min-h-screen bg-red-100 py-6 flex justify-center items-start;
+}

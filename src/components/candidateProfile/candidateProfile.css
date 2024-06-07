@@ -1,0 +1,27 @@
+.profile-cont{
+    @apply rounded-2xl flex bg-gray-100 w-[90%] min-w-[400px] max-w-[600px] flex flex-col items-center px-2 py-8;
+}
+.profile-title{
+    @apply text-3xl text-black text-center font-semibold mb-8 w-full
+}
+.profile-info-cont{
+    @apply flex justify-between w-[80%] min-w-[300px] items-center mb-4
+}
+.profile-info-label{
+    @apply font-bold text-black text-lg
+}
+.profile-info-value{
+    @apply font-normal text-black text-lg flex items-center
+}
+.profile-skill-cont{
+    @apply flex flex-col w-[80%] min-w-[300px]
+}
+.profile-skill-title{
+    @apply font-bold text-black text-lg
+}
+.profile-skill-tag-list{
+    @apply flex flex-wrap gap-2 my-4 justify-center
+}
+.profile-skill-tag{
+    @apply bg-white shadow-2xl text-sm font-extrabold py-2 px-2 rounded-full
+}

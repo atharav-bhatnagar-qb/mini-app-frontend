@@ -5,6 +5,7 @@ import '../components/jobListingMain/jobListingMain.css'
 import { bounties } from '../utils/sampledata'
 import JobCard from '../components/jobListingMain/JobCard'
 import { useNavigate } from 'react-router-dom'
+import { TonConnectButton } from '@tonconnect/ui-react'
 
 const JobListingMain = () => {
 
@@ -12,10 +13,12 @@ const JobListingMain = () => {
   const tonAuth=useContext(TonContext)
 
 
+
   return (
     <div className='page'>
       <div className="main-cont">
-        <button 
+        <TonConnectButton/>
+        {/* <button 
           onClick={()=>{
             tonAuth.setIsConnected(!tonAuth.isConnected)
             if(tonAuth?.isConnected){
@@ -31,7 +34,7 @@ const JobListingMain = () => {
               :
               "Connect"
             }
-        </button>
+        </button> */}
         <div className="main-job-list">
           <h1 className="main-job-list-title">
             Job Listings

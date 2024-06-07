@@ -8,9 +8,12 @@ import CandidateProfile from './pages/CandidateProfile'
 import './App.css'
 import { TonProvider } from './utils/context'
 import {Toaster} from 'react-hot-toast'
+import {TonConnectUIProvider} from '@tonconnect/ui-react'
 
 const App = () => {
+  const manifestURL="url"
   return (
+    <TonConnectUIProvider manifestUrl={manifestURL}>
     <TonProvider>
     <Router className='w-screen'>
       <Routes>
@@ -23,6 +26,7 @@ const App = () => {
       <Toaster/>
     </Router>
     </TonProvider>
+    </TonConnectUIProvider>
   )
 }
 

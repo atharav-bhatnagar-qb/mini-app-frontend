@@ -1,14 +1,14 @@
 export const bounties = [
-    { name: "Stolen Painting", des: "Help find a missing masterpiece!", bounty: 10000 },
-    { name: "Bug Bounty", des: "Fix a critical website bug", bounty: 5000 },
-    { name: "Lost Cat", des: "Bring Mittens home safe!", bounty: 200 },
-    { name: "Rare Book", des: "Locate a first edition classic", bounty: 7500 },
-    { name: "Data Breach", des: "Identify source of security leak", bounty: 15000 },
-    { name: "Coding Challenge", des: "Solve a complex programming task", bounty: 3000 },
-    { name: "Missing Person", des: "Help locate a loved one", bounty: 3600 },
-    { name: "Product Review", des: "Provide honest feedback on new app", bounty: 100 },
-    { name: "Language Tutor", des: "Teach me basic French", bounty: 40 },
-    { name: "Website Design", des: "Create a user-friendly landing page", bounty: 2500 },
+    { id:1, name: "Stolen Painting", des: "Help find a missing masterpiece!", bounty: 10000 },
+    { id:2,name: "Bug Bounty", des: "Fix a critical website bug", bounty: 5000 },
+    { id:3,name: "Lost Cat", des: "Bring Mittens home safe!", bounty: 200 },
+    { id:4,name: "Rare Book", des: "Locate a first edition classic", bounty: 7500 },
+    { id:5,name: "Data Breach", des: "Identify source of security leak", bounty: 15000 },
+    { id:6,name: "Coding Challenge", des: "Solve a complex programming task", bounty: 3000 },
+    { id:7,name: "Missing Person", des: "Help locate a loved one", bounty: 3600 },
+    { id:8,name: "Product Review", des: "Provide honest feedback on new app", bounty: 100 },
+    { id:9,name: "Language Tutor", des: "Teach me basic French", bounty: 40 },
+    { id:10,name: "Website Design", des: "Create a user-friendly landing page", bounty: 2500 },
   ];
 
   export const people = [

@@ -1,12 +1,18 @@
 import { createContext,useCallback,useEffect,useState } from "react"
+import { useTonConnect } from "./useTonConnect"
 
 export const TonContext=createContext()
 
+export const baseURL="http://localhost:5000/api/v1"
+
 export const useTon=()=>{
-    const [isConnected,setIsConnected]=useState(false)
+
+    const {connected}=useTonConnect()
+    const [isConnected,setIsConnected]=useState(connected)
     const [walletId,setWalletId]=useState(null)
     const [job,setJob]=useState(null)
     const [candidate,setCandidate]=useState(null)
+    const [user,setUser]=useState({})
 
     useEffect(()=>{
         console.log("from context : ",job)
@@ -14,7 +20,7 @@ export const useTon=()=>{
 
 
     return{
-        walletId,setWalletId,isConnected,setIsConnected,job,setJob,candidate,setCandidate
+        walletId,setWalletId,isConnected,setIsConnected,job,setJob,candidate,setCandidate,user,setUser
     }
 }
 

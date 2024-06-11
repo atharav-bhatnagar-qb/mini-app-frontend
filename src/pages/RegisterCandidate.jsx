@@ -1,11 +1,46 @@
 import React, { useState } from 'react'
 import '../components/registerCandidate/registerCandidate.css'
 import { useNavigate } from 'react-router-dom'
+import { baseURL, useTon } from '../utils/context'
+import { useTonConnect } from '../utils/useTonConnect'
+import toast from 'react-hot-toast'
+import axios from 'axios'
 
 const RegisterCandidate = () => {
   const skillCount=[1,2,3,4]
   const [skillNum,setSkillNum]=useState(1)
   const nav=useNavigate()
+  const {wallet}=useTonConnect()
+  const {tonAuth}=useTon()
+
+  async function registerUser(){
+    const name=document.querySelector('#name').value 
+    const email=document.querySelector('#email').value
+
+    console.log(name,email,wallet)
+
+    const newUserObj={
+      name:name,
+      email:email,
+      walletId:wallet
+    }
+
+    await axios.post(`${baseURL}/createUser`,{user:wallet,name,email}).then((res)=>{
+      console.log(res?.data)
+        if(res?.data?.message=="User created successfully"){
+          console.log("user created")
+          tonAuth?.setUser(newUserObj)
+          nav('/')
+        }else if(res?.data?.message == "user already exists"){
+          toast.error(res?.data?.message)
+          nav('/')
+        }else{
+          toast.error(res?.data?.message)
+        }
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
 
   return (
     <div className='page'>
@@ -15,14 +50,16 @@ const RegisterCandidate = () => {
           <input 
             type="text" 
             className="register-name-inp" 
+            id="name"
             placeholder='Candidate Name'
           />
           <input 
             type="email" 
+            id="email"
             className="register-email-inp" 
             placeholder='Candidate Email' 
           />
-          <div className="register-skill-cont">
+          {/* <div className="register-skill-cont">
             <div className="skill-num-cont">
               <h3 className="skill-num-cont-title">
                 Number of skills
@@ -57,11 +94,11 @@ const RegisterCandidate = () => {
                 ))
               }
             </div>
-          </div>
-        </div>
-        <button className="register-apply-btn" onClick={()=>{
-          nav('/JobApplication')
-        }}>Apply for the job</button>
+          </div>*/}
+        </div> 
+        <button className="register-apply-btn" onClick={registerUser}>
+          Register User
+        </button>
       </div>
     </div>
   )

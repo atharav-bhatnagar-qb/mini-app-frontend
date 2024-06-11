@@ -23,5 +23,8 @@
     @apply bg-blue-400 rounded-2xl text-white text-lg font-semibold px-6 py-2
 }
 .job-referral-link{
-    @apply text-black text-base font-semibold my-2
+    @apply text-black text-base font-semibold my-2 break-words  max-w-[300px]
+}
+.back-icon{
+    @apply text-xl absolute top-10 left-10 cursor-pointer
 }

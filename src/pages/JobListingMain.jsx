@@ -1,40 +1,66 @@
 import React, { useContext, useEffect } from 'react'
-import { TonContext, useTon } from '../utils/context'
+import { TonContext, baseURL, useTon } from '../utils/context'
 import toast from 'react-hot-toast'
 import '../components/jobListingMain/jobListingMain.css'
 import { bounties } from '../utils/sampledata'
 import JobCard from '../components/jobListingMain/JobCard'
 import { useNavigate } from 'react-router-dom'
 import { TonConnectButton } from '@tonconnect/ui-react'
+import { useTonConnect } from '../utils/useTonConnect'
+import axios from 'axios'
 
 const JobListingMain = () => {
 
   const nav=useNavigate()
   const tonAuth=useContext(TonContext)
+  const {connected,wallet}=useTonConnect()
 
+  async function getUserDetails(){
+    await axios.get(`${baseURL}/getUser?wallet=${wallet.toString()}`).then((res)=>{
+      console.log(res)
+      if(res?.data?.message=="no user exists with this walletid"){
+        console.log("need to register")
+        nav('/register')
+      }else{
+        tonAuth?.setUser(res?.data?.message)
+        toast.success(`Welcome back ${res?.data?.message?.name} !`)
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
 
+  useEffect(()=>{
+    console.log("is conn user",connected)
+    if(connected){
+      getUserDetails()
+    }
+  },[connected])
 
   return (
     <div className='page'>
       <div className="main-cont">
-        <TonConnectButton/>
-        {/* <button 
-          onClick={()=>{
-            tonAuth.setIsConnected(!tonAuth.isConnected)
-            if(tonAuth?.isConnected){
-              toast.success(`Wallet disconnected successfully!`)
-            }else{
-              toast.success(`Wallet connected successfully!`)
-            }
-          }}
-          className="main-connect-btn">
-            {
-              tonAuth.isConnected?
-              "Disconnect"
-              :
-              "Connect"
-            }
-        </button> */}
+        <div className="main-btn-cont">
+          <TonConnectButton/>
+          {
+            connected?
+            <button 
+              className='main-connect-btn'
+              onClick={()=>{
+                if(tonAuth?.user?.name==""||tonAuth?.user?.name==undefined){
+                  return
+                }else{
+                  nav('/apply')
+                }
+              }}
+            >
+              Apply for a job
+            </button>
+            :
+            <></>
+          }
+        </div>
+        
         <div className="main-job-list">
           <h1 className="main-job-list-title">
             Job Listings

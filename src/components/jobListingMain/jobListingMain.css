@@ -4,6 +4,9 @@
 .main-connect-btn{
     @apply bg-blue-400 rounded-2xl text-white text-lg font-semibold px-6 py-2 ml-[5%]
 }
+.main-btn-cont{
+    @apply flex w-[90%]
+}
 .main-job-list{
     @apply flex flex-col my-20 w-full items-center my-8 
 }

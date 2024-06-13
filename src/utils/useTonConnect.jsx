@@ -14,7 +14,7 @@ export function useTonConnect(){
                         amount:args.value.toString(),
                         payload:args.body?.toBoc().toString("base64")
                     }],
-                    validUntil:new Date() + 5 *60 * 1000
+                    validUntil:new Date() + (5 *60 * 1000)
                 })
             },
             address:wallet?.account.address ? Address.parse(wallet?.account.address) : undefined

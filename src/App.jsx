@@ -16,7 +16,7 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 const App = () => {
   const manifestURL="https://raw.githubusercontent.com/ton-community/tutorials/main/03-client/test/public/tonconnect-manifest.json"
   return (
-    <TonConnectUIProvider manifestUrl={manifestURL}>
+    <TonConnectUIProvider enableAndroidBackHandler={true} manifestUrl={manifestURL}>
     <TonProvider>
     <Router className='w-screen'>
       <Routes>

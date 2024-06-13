@@ -13,10 +13,11 @@ const JobDetails = () => {
   const tonAuth=useContext(TonContext)
   const [showRef,setShowRef]=useState(false)
   const nav=useNavigate()
-  const {connected,wallet,sender}=useTonConnect()
+  const {connected,wallet,sender,network}=useTonConnect()
   const newLink=`https://t.me/ton_demo_tel_bot?start=${wallet.toString().slice(2,11)}job${tonAuth?.job?.id}`
   const [isGenerated,setIsGenerated]=useState(false)
-  const receiver="EQChHpu8-rFBQyVCXJtT1aTwODTBc1dFUAEatbYy11ZLcBST"
+  const TON_DECIMALS=9
+  const receiver="0QCueun5yIwfsyNDXMe2UQR25WJK5MOYDbkc-elqXeVoU2Ka"
 
   async function getReferral(){
     await axios.get(`${baseURL}/getLink?link=${newLink}`).then((res)=>{
@@ -30,12 +31,15 @@ const JobDetails = () => {
   }
 
   async function generateReferral(){
+    console.log("newtwork : ",network)
     await sender.send({
-      to:receiver,
-      value:1
+      to:sender.address,
+      value:Math.pow(10,9-2),
+      // body:"Generating referral"
     }).then(async(res)=>{
+      console.log("ton res : ",res)
       await axios.post(`${baseURL}/createLink`,{
-        generatedBy:wallet.toString(),
+        generatedBy:wallet,
         link:newLink,
         jobId:tonAuth?.job?.id
       }).then(async(res)=>{
@@ -51,7 +55,7 @@ const JobDetails = () => {
       })
     }).catch((err)=>{
       console.log(err) 
-      toast.err("Could not complete ton transaction!")
+      toast.error("Could not complete ton transaction!")
     })
     
   }

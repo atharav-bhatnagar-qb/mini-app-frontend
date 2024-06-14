@@ -28,3 +28,6 @@
 .back-icon{
     @apply text-xl absolute top-10 left-10 cursor-pointer
 }
+.job-view-applications-btn{
+    @apply bg-transparent rounded-2xl text-black text-lg font-semibold px-6 py-2 my-5
+}

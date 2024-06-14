@@ -10,6 +10,7 @@ import { TonProvider } from './utils/context'
 import {Toaster} from 'react-hot-toast'
 import {TonConnectUIProvider} from '@tonconnect/ui-react'
 import ApplyForJob from './pages/ApplyForJob'
+import AddNewJob from './pages/AddNewJob'
 window.Buffer = window.Buffer || require("buffer").Buffer; 
 
 
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/JobApplication' element={<JobApplications/>}/>
         <Route path='/candidateProfile' element={<CandidateProfile/>}/>
         <Route path='/apply' element={<ApplyForJob/>}/>
+        <Route path='/createJob' element={<AddNewJob/>}/>
       </Routes>
       <Toaster/>
     </Router>

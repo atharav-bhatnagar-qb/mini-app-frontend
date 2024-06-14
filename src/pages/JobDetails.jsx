@@ -107,6 +107,9 @@ const JobDetails = () => {
               {isGenerated?newLink:""}
             </p>
         </div>
+        <button className='job-view-applications-btn' onClick={()=>nav('/JobApplication')}>
+          View Applications
+        </button>
       </div>
     </div>
   )

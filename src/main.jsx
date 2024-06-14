@@ -10,7 +10,7 @@ window.Buffer = buffer.Buffer;
 WebApp.ready()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )

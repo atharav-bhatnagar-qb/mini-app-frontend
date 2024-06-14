@@ -1,0 +1,18 @@
+.addjob-cont{
+    @apply rounded-2xl flex bg-gray-100 w-[90%] min-w-[400px] max-w-[600px] flex flex-col items-center px-2 py-8;
+}
+.addjob-title{
+    @apply text-3xl text-black text-center font-semibold mb-8 w-full
+}
+.addjob-form-cont{
+    @apply flex flex-col items-center w-[90%]
+}
+.addjob-inp{
+    @apply mb-3 rounded-2xl py-2 px-2 w-[80%]
+}
+.addjob-large-inp{
+    @apply mb-3 rounded-2xl py-2 px-2 w-[80%]
+}
+.addjob-submit-btn{
+    @apply block bg-blue-400 rounded-2xl text-white text-lg font-semibold px-6 py-2 mt-4
+}

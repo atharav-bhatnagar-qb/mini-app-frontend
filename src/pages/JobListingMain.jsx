@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TonContext, baseURL, useTon } from '../utils/context'
 import toast from 'react-hot-toast'
 import '../components/jobListingMain/jobListingMain.css'
@@ -14,6 +14,7 @@ const JobListingMain = () => {
   const nav=useNavigate()
   const tonAuth=useContext(TonContext)
   const {connected,wallet}=useTonConnect()
+  const [jobs,setJobs]=useState([])
 
   async function getUserDetails(){
     await axios.get(`${baseURL}/getUser?wallet=${wallet.toString()}`).then((res)=>{
@@ -30,8 +31,25 @@ const JobListingMain = () => {
     })
   }
 
+  async function getJobs(){
+    setJobs([])
+    await axios.get(`${baseURL}/getAllJobs`).then((res)=>{
+      console.log(res?.data,res?.data?.jobs!=undefined)
+      if(res?.data?.jobs!=undefined){
+        for(let i=res?.data?.jobs?.length-1;i>=0;i--){
+            let newJob={...res?.data?.jobs[i],id:res?.data?.jobs[i]?.jobId}
+            console.log(newJob)
+            setJobs(j=>[...j,newJob])
+        }
+      }
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
+
   useEffect(()=>{
     console.log("is conn user",connected)
+    getJobs()
     if(connected){
       getUserDetails()
     }
@@ -66,7 +84,25 @@ const JobListingMain = () => {
             Job Listings
           </h1>
           {
-            bounties.map((bounty,index)=>(
+            connected?
+            <button 
+              className="main-create-job-btn"
+              onClick={()=>{
+                if(tonAuth?.user?.name==""||tonAuth?.user?.name==undefined){
+                  return
+                }else{
+                  nav('/createJob')
+                }
+              }}
+            >
+              + Create new job
+            </button>
+            :
+            <></>
+          }
+          
+          {
+            jobs.map((bounty,index)=>(
               <JobCard key={index} jobItem={bounty} nav={nav}/>
             ))
           }

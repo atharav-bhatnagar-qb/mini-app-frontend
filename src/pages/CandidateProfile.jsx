@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { TonContext } from '../utils/context'
 import '../components/candidateProfile/candidateProfile.css'
 import { FaStar } from 'react-icons/fa'
+import { IoMdArrowBack } from 'react-icons/io'
 
 const CandidateProfile = () => {
   const nav=useNavigate()
@@ -10,6 +11,9 @@ const CandidateProfile = () => {
   return (
     <div className='page'>
       <div className="profile-cont">
+      <IoMdArrowBack className='back-icon' onClick={()=>{
+          nav('/')
+        }}/>
         <h1 className="profile-title">Candidate Profile</h1>
         <div className="profile-info-cont">
           <h3 className="profile-info-label">Name : </h3>

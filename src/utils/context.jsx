@@ -3,7 +3,7 @@ import { useTonConnect } from "./useTonConnect"
 
 export const TonContext=createContext()
 
-export const baseURL="http://localhost:5000/api/v1"
+export const baseURL="http://143.110.249.49/api/v1"
 
 export const useTon=()=>{
 

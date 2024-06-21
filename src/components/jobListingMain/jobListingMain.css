@@ -25,3 +25,7 @@
 .main-create-job-btn{
     @apply bg-transparent rounded-2xl text-black text-lg font-semibold px-6 py-2 mb-4
 }
+.empty-text{
+    @apply text-black text-sm font-medium my-5
+
+}

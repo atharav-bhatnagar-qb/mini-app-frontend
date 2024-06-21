@@ -100,11 +100,24 @@ const JobListingMain = () => {
             :
             <></>
           }
+
+          {
+            
+            jobs?.length<=0?
+            
+            <p className="empty-text">
+              No jobs to show {console.log(jobs,"jobs")}
+            </p>
+            :
+            <></>
+          }
+
           
           {
             jobs.map((bounty,index)=>(
               <JobCard key={index} jobItem={bounty} nav={nav}/>
             ))
+            
           }
         </div>
       </div>

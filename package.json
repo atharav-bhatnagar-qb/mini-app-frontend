@@ -13,6 +13,7 @@
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@orbs-network/ton-access": "^2.3.3",
     "@rollup/plugin-inject": "^5.0.5",
+    "@ton/blueprint": "^0.21.0",
     "@tonconnect/ui-react": "^2.0.3",
     "@twa-dev/sdk": "^7.0.0",
     "axios": "^1.7.2",

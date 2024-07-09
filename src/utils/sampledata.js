@@ -10,6 +10,76 @@ export const bounties = [
     { id:9,name: "Language Tutor", des: "Teach me basic French", bounty: 40 },
     { id:10,name: "Website Design", des: "Create a user-friendly landing page", bounty: 2500 },
   ];
+export const jobsData=[
+    {
+        'jobProfile':'React Developer',
+        'profilePic':'Random Symboles 2.svg',
+        'companyName':'Quadb Tech',
+        'description':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'aboutRole':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'skills':['html','css','javascript', 'reactjs'],
+        'candidateRequirement': [
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus',
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus',
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus'
+          ],
+        'jobResponsbility':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor.',
+        'aboutCompany':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'extraDetails':['Competitive Salary','Competitive Salary','Competitive Salary','Competitive Salary','Competitive Salary', ['crypto', 'crypto', 'crypto', 'crypto','crypto', 'crypto','crypto', 'crypto','crypto' ]]
+    
+    },
+    {
+        'jobProfile':'Java Developer',
+        'profilePic':'Random Symboles 2.svg',
+        'companyName':'Quadb Tech',
+        'description':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'aboutRole':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'skills':['html','css','javascript', 'reactjs'],
+        'candidateRequirement': [
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus',
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus',
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus'
+          ],
+        'jobResponsbility':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor.',
+        'aboutCompany':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'extraDetails':['Competitive Salary','Competitive Salary','Competitive Salary','Competitive Salary','Competitive Salary', ['crypto', 'crypto', 'crypto', 'crypto','crypto', 'crypto','crypto', 'crypto','crypto' ]]
+    
+    },
+    {
+        'jobProfile':'Nodejs Developer',
+        'profilePic':'Random Symboles 2.svg',
+        'companyName':'Quadb Tech',
+        'description':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'aboutRole':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'skills':['html','css','javascript', 'reactjs'],
+        'candidateRequirement': [
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus',
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus',
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus'
+          ],
+        'jobResponsbility':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor.',
+        'aboutCompany':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'extraDetails':['Competitive Salary','Competitive Salary','Competitive Salary','Competitive Salary','Competitive Salary', ['crypto', 'crypto', 'crypto', 'crypto','crypto', 'crypto','crypto', 'crypto','crypto' ]]
+    
+    },
+    {
+        'jobProfile':'Blockchain Developer',
+        'profilePic':'Random Symboles 2.svg',
+        'companyName':'Quadb Tech',
+        'description':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'aboutRole':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'skills':['html','css','javascript', 'reactjs'],
+        'candidateRequirement': [
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus',
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus',
+            'Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus'
+          ],
+        'jobResponsbility':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor.',
+        'aboutCompany':' Lorem ipsum dolor sit amet consectetur. Scelerisque ut congue congue luctus feugiat amet id. Odio tortor orci elit enim iaculis neque donec. Vel eu amet consectetur tempor interdum ultrices ultrices tempus. Est non dis dictumst sed risus.',
+        'extraDetails':['Competitive Salary','Competitive Salary','Competitive Salary','Competitive Salary','Competitive Salary', ['crypto', 'crypto', 'crypto', 'crypto','crypto', 'crypto','crypto', 'crypto','crypto' ]]
+    
+    },
+]
 
   export const people = [
     {

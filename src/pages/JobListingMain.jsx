@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { TonContext, baseURL, useTon } from '../utils/context'
 import toast from 'react-hot-toast'
 import '../components/jobListingMain/jobListingMain.css'
-import { bounties } from '../utils/sampledata'
+import { bounties, jobsData } from '../utils/sampledata'
 import JobCard from '../components/jobListingMain/JobCard'
 import { useNavigate } from 'react-router-dom'
 import { TonConnectButton } from '@tonconnect/ui-react'
 import { useTonConnect } from '../utils/useTonConnect'
+import { IoSearch } from "react-icons/io5";
 import axios from 'axios'
 
 const JobListingMain = () => {
@@ -15,6 +16,7 @@ const JobListingMain = () => {
   const tonAuth=useContext(TonContext)
   const {connected,wallet}=useTonConnect()
   const [jobs,setJobs]=useState([])
+  const [searchText,setSearchText]=useState("")
 
   async function getUserDetails(){
     await axios.get(`${baseURL}/getUser?wallet=${wallet.toString()}`).then((res)=>{
@@ -49,76 +51,49 @@ const JobListingMain = () => {
 
   useEffect(()=>{
     console.log("is conn user",connected)
-    getJobs()
-    if(connected){
-      getUserDetails()
-    }
+    // getJobs()
+    setJobs([...jobsData])
+    // if(connected){
+    //   getUserDetails()
+    // }
   },[connected])
 
   return (
     <div className='page'>
       <div className="main-cont">
-        <div className="main-btn-cont">
+        <div className="main-header-cont">
+          <h1 className="main-header-title">Jobs</h1>
           <TonConnectButton/>
-          {
-            connected?
-            <button 
-              className='main-connect-btn'
-              onClick={()=>{
-                if(tonAuth?.user?.name==""||tonAuth?.user?.name==undefined){
-                  return
-                }else{
-                  nav('/apply')
-                }
-              }}
-            >
-              Apply for a job
-            </button>
-            :
-            <></>
-          }
         </div>
-        
+        <div className="main-search-cont">
+          <IoSearch className='search-icon' />
+          <input 
+            type="text"
+            onChange={(e)=>setSearchText(e.target.value)}
+            className="main-search-inp" 
+            placeholder='Search by job title or company'
+          />
+        </div>
+        <div className="main-feature-job-cont">
+          <h3 className="main-feature-job-title">Featured Jobs</h3>
+          <div className='main-feature-scroll-cont no-scrollbar'>
+                    {jobs.map((data, ind) => (
+                        <div className='main-feature-job-card-cont' key={ind} >
+                            <JobCard data={data} nav={nav}/>
+                        </div>
+                    ))}
+                </div>
+        </div>
         <div className="main-job-list">
-          <h1 className="main-job-list-title">
-            Job Listings
-          </h1>
-          {
-            connected?
-            <button 
-              className="main-create-job-btn"
-              onClick={()=>{
-                if(tonAuth?.user?.name==""||tonAuth?.user?.name==undefined){
-                  return
-                }else{
-                  nav('/createJob')
-                }
-              }}
-            >
-              + Create new job
-            </button>
-            :
-            <></>
-          }
-
-          {
-            
-            jobs?.length<=0?
-            
-            <p className="empty-text">
-              No jobs to show {console.log(jobs,"jobs")}
-            </p>
-            :
-            <></>
-          }
-
           
           {
-            jobs.map((bounty,index)=>(
-              <JobCard key={index} jobItem={bounty} nav={nav}/>
+            jobs.map((data, ind) => (
+              <div key={ind}> 
+                <JobCard data={data} nav={nav}/>
+              </div>
             ))
-            
           }
+          
         </div>
       </div>
     </div>

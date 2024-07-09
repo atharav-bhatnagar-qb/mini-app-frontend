@@ -23,6 +23,7 @@ const App = () => {
     <Router className='w-screen'>
       <Routes>
         <Route path='/' element={<JobListingMain/>}/>
+        {/* <Route path='/' element={<RegisterCandidate/>}/> */}
         <Route path='/jobDetail' element={<JobDetails/>}/>
         <Route path='/register' element={<RegisterCandidate/>}/>
         <Route path='/JobApplication' element={<JobApplications/>}/>

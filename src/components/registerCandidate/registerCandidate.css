@@ -1,17 +1,20 @@
 .register-cont{
-    @apply rounded-2xl flex bg-gray-100 w-[90%] min-w-[400px] max-w-[600px] flex flex-col items-center px-2 py-8;
+    @apply rounded-2xl bg-gradient-to-r from-[#364659] via-[#253746] to-[#142636] w-[90%] min-w-[400px] max-w-[600px] flex flex-col items-center px-5 py-8;
 }
 .register-title{
-    @apply text-3xl text-black text-center font-semibold mb-8 w-full
+    @apply text-2xl text-white text-center font-semibold mb-8 w-full
 }
 .register-form-cont{
-    @apply flex flex-col items-center
+    @apply flex flex-col items-center w-full
+}
+.register-inp-label{
+    @apply text-white font-medium text-base mb-0 w-full
 }
 .register-name-inp{
-    @apply mb-3 rounded-2xl py-2 px-2
+    @apply mb-5 rounded-xl py-2 px-2 w-full
 }
 .register-email-inp{
-    @apply mb-3 rounded-2xl py-2 px-2
+    @apply mb-5 rounded-xl py-2 px-2 w-full
 }
 .register-skill-cont{
     @apply flex flex-col items-center w-full
@@ -35,7 +38,7 @@
     @apply mb-2 rounded-xl py-2 px-2
 }
 .register-apply-btn{
-    @apply bg-blue-400 rounded-2xl text-white text-lg font-semibold px-6 py-2 mt-4
+    @apply bg-[#1A8770] p-2 px-12 text-base mb-5 mt-7 rounded-xl text-white border-white border-2
 }
 
 

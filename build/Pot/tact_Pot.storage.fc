@@ -1,0 +1,199 @@
+;;
+;; Type: StateInit
+;; TLB: _ code:^cell data:^cell = StateInit
+;;
+
+((cell, cell)) $StateInit$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (cell vvv'code, cell vvv'data) = __tact_tuple_destroy_2(v);
+    return (vvv'code, vvv'data);
+}
+
+;;
+;; Type: Context
+;; TLB: _ bounced:bool sender:address value:int257 raw:^slice = Context
+;;
+
+_ $Context$_get_value((int, slice, int, slice) v) inline {
+    var (v'bounced, v'sender, v'value, v'raw) = v;
+    return v'value;
+}
+
+;;
+;; Type: SendParameters
+;; TLB: _ bounce:bool to:address value:int257 mode:int257 body:Maybe ^cell code:Maybe ^cell data:Maybe ^cell = SendParameters
+;;
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int bounce, slice to, int value, int mode, cell body, cell code, cell data) inline {
+    return (bounce, to, value, mode, body, code, data);
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_mode_bounce(slice to, int value, int mode, int bounce) inline {
+    return (bounce, to, value, mode, null(), null(), null());
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_mode_bounce_code_data_body(slice to, int value, int mode, int bounce, cell code, cell data, cell body) inline {
+    return (bounce, to, value, mode, body, code, data);
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_mode_bounce_body(slice to, int value, int mode, int bounce, cell body) inline {
+    return (bounce, to, value, mode, body, null(), null());
+}
+
+;;
+;; Type: Deploy
+;; Header: 0x946a98b6
+;; TLB: deploy#946a98b6 queryId:uint64 = Deploy
+;;
+
+(slice, ((int))) $Deploy$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2490013878);
+    var v'queryId = sc_0~load_uint(64);
+    return (sc_0, (v'queryId));
+}
+
+;;
+;; Type: DeployOk
+;; Header: 0xaff90f57
+;; TLB: deploy_ok#aff90f57 queryId:uint64 = DeployOk
+;;
+
+builder $DeployOk$_store(builder build_0, (int) v) inline {
+    var (v'queryId) = v;
+    build_0 = store_uint(build_0, 2952335191, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    return build_0;
+}
+
+cell $DeployOk$_store_cell((int) v) inline {
+    return $DeployOk$_store(begin_cell(), v).end_cell();
+}
+
+((int)) $DeployOk$_constructor_queryId(int queryId) inline {
+    return (queryId);
+}
+
+;;
+;; Type: Affiliate
+;; Header: 0xfd6aff48
+;; TLB: affiliate#fd6aff48 affiliate:address = Affiliate
+;;
+
+builder $Affiliate$_store(builder build_0, (slice) v) inline {
+    var (v'affiliate) = v;
+    build_0 = store_uint(build_0, 4251647816, 32);
+    build_0 = __tact_store_address(build_0, v'affiliate);
+    return build_0;
+}
+
+cell $Affiliate$_store_cell((slice) v) inline {
+    return $Affiliate$_store(begin_cell(), v).end_cell();
+}
+
+((slice)) $Affiliate$_constructor_affiliate(slice affiliate) inline {
+    return (affiliate);
+}
+
+;;
+;; Type: WithdrawAmount
+;; Header: 0x5d64d821
+;; TLB: withdraw_amount#5d64d821 amount:coins = WithdrawAmount
+;;
+
+(slice, ((int))) $WithdrawAmount$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 1566890017);
+    var v'amount = sc_0~load_coins();
+    return (sc_0, (v'amount));
+}
+
+;;
+;; Type: GenerateReferral
+;; Header: 0xdc6ef34f
+;; TLB: generate_referral#dc6ef34f jobId:^string link:^string generatedBy:address = GenerateReferral
+;;
+
+(slice, ((slice, slice, slice))) $GenerateReferral$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 3698258767);
+    var v'jobId = sc_0~load_ref().begin_parse();
+    var v'link = sc_0~load_ref().begin_parse();
+    var v'generatedBy = sc_0~__tact_load_address();
+    return (sc_0, (v'jobId, v'link, v'generatedBy));
+}
+
+;;
+;; Type: CandidateRegistered
+;; Header: 0x3cc67486
+;; TLB: candidate_registered#3cc67486 rating:uint8 jobId:^string link:^string = CandidateRegistered
+;;
+
+(slice, ((int, slice, slice))) $CandidateRegistered$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 1019638918);
+    var v'rating = sc_0~load_uint(8);
+    var v'jobId = sc_0~load_ref().begin_parse();
+    var v'link = sc_0~load_ref().begin_parse();
+    return (sc_0, (v'rating, v'jobId, v'link));
+}
+
+;;
+;; Type: Referral
+;;
+
+builder $Referral$init$_store(builder build_0, (slice, slice) v) inline {
+    var (v'jobId, v'link) = v;
+    build_0 = build_0.store_ref(begin_cell().store_slice(v'jobId).end_cell());
+    build_0 = build_0.store_ref(begin_cell().store_slice(v'link).end_cell());
+    return build_0;
+}
+
+(cell, cell) $Referral$_init_child(cell sys', slice $jobId, slice $link) inline_ref {
+    slice sc' = sys'.begin_parse();
+    cell source = sc'~load_dict();
+    cell contracts = new_dict();
+    
+    ;; Contract Code: Referral
+    cell mine = __tact_dict_get_code(source, 59977);
+    contracts = __tact_dict_set_code(contracts, 59977, mine);
+    
+    ;; Build cell
+    builder b = begin_cell();
+    b = b.store_ref(begin_cell().store_dict(contracts).end_cell());
+    b = b.store_int(false, 1);
+    b = $Referral$init$_store(b, ($jobId, $link));
+    return (mine, b.end_cell());
+}
+
+;;
+;; Type: Pot
+;;
+
+builder $Pot$_store(builder build_0, (slice) v) inline {
+    var (v'owner) = v;
+    build_0 = __tact_store_address(build_0, v'owner);
+    return build_0;
+}
+
+(slice, ((slice))) $Pot$_load(slice sc_0) inline {
+    var v'owner = sc_0~__tact_load_address();
+    return (sc_0, (v'owner));
+}
+
+(slice) $Pot$_contract_load() impure inline_ref {
+    slice $sc = get_data().begin_parse();
+    __tact_context_sys = $sc~load_ref();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$Pot$_load();
+    } else {
+        ;; Allow only workchain deployments
+        throw_unless(137, my_address().preload_uint(11) == 1024);
+        return $Pot$_contract_init();
+    }
+}
+
+() $Pot$_contract_store((slice) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_ref(__tact_context_sys);
+    b = b.store_int(true, 1);
+    b = $Pot$_store(b, v);
+    set_data(b.end_cell());
+}

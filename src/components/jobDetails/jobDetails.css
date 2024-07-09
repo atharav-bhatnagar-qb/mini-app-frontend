@@ -1,33 +1,30 @@
 .job-detail-cont{
-    @apply rounded-2xl flex bg-gray-100 w-[90%] min-w-[400px] max-w-[600px] flex flex-col items-center px-2 py-8;
-}
-.job-detail-title{
-    @apply text-3xl text-black text-center font-semibold mb-8 w-full
-}
-.job-detail-info-cont{
-    @apply flex flex-col w-full items-center
-}
-.job-info-name{
-    @apply w-[80%] text-black text-2xl font-semibold my-6 text-left
-}
-.job-info-bounty{
-    @apply w-[80%] text-black text-xl font-medium mb-6 text-left
-}
-.job-info-desc{
-    @apply w-[80%] text-black text-lg font-light mb-6 text-left
-}
-.job-referral-link-cont{
-    @apply flex flex-wrap w-[80%] min-w-[200px] justify-between
-}
-.job-referral-gen-btn{
-    @apply bg-blue-400 rounded-2xl text-white text-lg font-semibold px-6 py-2
-}
-.job-referral-link{
-    @apply text-black text-base font-semibold my-2 break-words  max-w-[300px]
+    @apply bg-[#031931] py-5 pb-24 w-full
 }
 .back-icon{
-    @apply text-xl absolute top-10 left-10 cursor-pointer
+    @apply ml-5;
 }
-.job-view-applications-btn{
-    @apply bg-transparent rounded-2xl text-black text-lg font-semibold px-6 py-2 my-5
+
+/* view application  */
+
+.view-application-btn{
+    @apply bg-white text-center rounded-2xl mt-5 mx-5
+}
+.view-application-btn h1{
+    @apply text-black text-xl font-bold py-2
+}
+
+
+/* about company   */
+.about-company-cont{
+    @apply bg-white mt-5 mx-5 rounded-2xl
+}
+.about-company-sub-cont{
+    @apply bg-white mt-5 rounded-2xl mx-5 pt-6 pb-10
+}
+.about-company-sub-cont h1{
+    @apply font-semibold
+}
+.about-company-sub-cont p{
+    @apply mt-3  text-sm text-[#666666]
 }

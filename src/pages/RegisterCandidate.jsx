@@ -47,17 +47,19 @@ const RegisterCandidate = () => {
       <div className="register-cont">
         <h1 className="register-title">Register</h1>
         <div className="register-form-cont">
+          <h3 className="register-inp-label">Name </h3>
           <input 
             type="text" 
             className="register-name-inp" 
             id="name"
-            placeholder='Candidate Name'
+            // placeholder='Candidate Name'
           />
+          <h3 className="register-inp-label">Email </h3>
           <input 
             type="email" 
             id="email"
             className="register-email-inp" 
-            placeholder='Candidate Email' 
+            // placeholder='Candidate Email' 
           />
           {/* <div className="register-skill-cont">
             <div className="skill-num-cont">
@@ -97,8 +99,8 @@ const RegisterCandidate = () => {
           </div>*/}
         </div> 
         <button className="register-apply-btn" onClick={registerUser}>
-          Register User
-        </button>
+          REGISTER
+ USER        </button>
       </div>
     </div>
   )

@@ -1,0 +1,192 @@
+#pragma version =0.4.4;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+#include "tact_Referral.headers.fc";
+#include "tact_Referral.stdlib.fc";
+#include "tact_Referral.storage.fc";
+
+;;
+;; Contract Referral functions
+;;
+
+(slice, slice, slice, slice) $Referral$_contract_init(slice $jobId, slice $link) impure inline_ref {
+    var (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link)) = (null(), null(), null(), null());
+    $self'ownerContract = __tact_context_get_sender();
+    $self'jobId = $jobId;
+    $self'link = $link;
+    return ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link);
+}
+
+((slice, slice, slice, slice), ()) $Referral$_fun_onlyOwner((slice, slice, slice, slice) $self) impure inline_ref {
+    var (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link)) = $self;
+    throw_unless(23888, ( __tact_slice_eq_bits($self'ownerContract, __tact_context_get_sender()) ));
+    return (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link), ());
+}
+
+((slice, slice, slice, slice), (slice, slice, slice, slice)) $Referral$_fun_details((slice, slice, slice, slice) $self) impure inline_ref {
+    var (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link)) = $self;
+    var ($ref'ownerContract, $ref'generatedBy, $ref'jobId, $ref'link) = $Ref$_constructor_ownerContract_generatedBy_jobId_link($self'ownerContract, __tact_not_null($self'generatedBy), $self'jobId, $self'link);
+    return (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link), ($ref'ownerContract, $ref'generatedBy, $ref'jobId, $ref'link));
+}
+
+((slice, slice, slice, slice), int) $Referral$_fun_balance((slice, slice, slice, slice) $self) impure inline_ref {
+    var (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link)) = $self;
+    return (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link), __tact_my_balance());
+}
+
+;;
+;; Receivers of a Contract Referral
+;;
+
+(((slice, slice, slice, slice)), ()) $Referral$_internal_binary_Affiliate((slice, slice, slice, slice) $self, (slice) $msg) impure inline {
+    var ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link) = $self;
+    var ($msg'affiliate) = $msg;
+    $self'generatedBy = $msg'affiliate;
+    return (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link), ());
+}
+
+((slice, slice, slice, slice), ()) $Referral$_internal_text_f3a89b1e1fcd95302485a334adff0358a844d4f035b971c74cfdaa37ac5c140b((slice, slice, slice, slice) $self) impure inline {
+    var ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link) = $self;
+    ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link)~$Referral$_fun_onlyOwner();
+    int $amount = min(2000000000, ((__tact_my_balance() - $Context$_get_value(__tact_context_get())) - 10000000));
+    $global_send($SendParameters$_constructor_to_value_mode_bounce(__tact_not_null($self'generatedBy), $amount, (2 + 64), true));
+    return (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link), ());
+}
+
+((slice, slice, slice, slice), ()) $Referral$_internal_text_6ef41a1603279cbd03396d3a3593d3f465c968554125a8b39067ebfc8b060d65((slice, slice, slice, slice) $self) impure inline {
+    var ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link) = $self;
+    ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link)~$Referral$_fun_onlyOwner();
+    int $amount = min(1000000000, ((__tact_my_balance() - $Context$_get_value(__tact_context_get())) - 10000000));
+    $global_send($SendParameters$_constructor_to_value_mode_bounce(__tact_not_null($self'generatedBy), $amount, (2 + 64), true));
+    return (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link), ());
+}
+
+((slice, slice, slice, slice), ()) $Referral$_internal_text_a3677a10b380dd94931e32fde88aaf77059d02a6762344ce67b22a668aa7a199((slice, slice, slice, slice) $self) impure inline {
+    var ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link) = $self;
+    ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link)~$Referral$_fun_onlyOwner();
+    int $amount = min(1000000000, ((__tact_my_balance() - $Context$_get_value(__tact_context_get())) - 10000000));
+    $global_send($SendParameters$_constructor_to_value_mode_bounce($self'ownerContract, $amount, (2 + 64), true));
+    return (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link), ());
+}
+
+(((slice, slice, slice, slice)), ()) $Referral$_internal_binary_Deploy((slice, slice, slice, slice) $self, (int) $deploy) impure inline {
+    var ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link) = $self;
+    var ($deploy'queryId) = $deploy;
+    ($self'ownerContract, $self'generatedBy, $self'jobId, $self'link)~$Referral$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
+    return (($self'ownerContract, $self'generatedBy, $self'jobId, $self'link), ());
+}
+
+;;
+;; Get methods of a Contract Referral
+;;
+
+_ %details() method_id(118890) {
+    var self = $Referral$_contract_load();
+    var res = self~$Referral$_fun_details();
+    return $Ref$_to_external(res);
+}
+
+_ %balance() method_id(104128) {
+    var self = $Referral$_contract_load();
+    var res = self~$Referral$_fun_balance();
+    return res;
+}
+
+_ supported_interfaces() method_id {
+    return (
+        "org.ton.introspection.v0"H >> 128,
+        "org.ton.abi.ipfs.v0"H >> 128,
+        "org.ton.deploy.lazy.v0"H >> 128,
+        "org.ton.debug.v0"H >> 128,
+        "org.ton.chain.workchain.v0"H >> 128
+    );
+}
+
+_ get_abi_ipfs() method_id {
+    return "ipfs://QmTLhYwFsttXLAy8GZWxNh5Xu11tJNqTGdEQQDtGGaR2KC";
+}
+
+_ lazy_deployment_completed() method_id {
+    return get_data().begin_parse().load_int(1);
+}
+
+;;
+;; Routing of a Contract Referral
+;;
+
+((slice, slice, slice, slice), int) $Referral$_contract_router_internal((slice, slice, slice, slice) self, int msg_bounced, slice in_msg) impure inline_ref {
+    ;; Handle bounced messages
+    if (msg_bounced) {
+        return (self, true);
+    }
+    
+    ;; Parse incoming message
+    int op = 0;
+    if (slice_bits(in_msg) >= 32) {
+        op = in_msg.preload_uint(32);
+    }
+    
+    
+    ;; Receive Affiliate message
+    if (op == 4251647816) {
+        var msg = in_msg~$Affiliate$_load();
+        self~$Referral$_internal_binary_Affiliate(msg);
+        return (self, true);
+    }
+    
+    ;; Receive Deploy message
+    if (op == 2490013878) {
+        var msg = in_msg~$Deploy$_load();
+        self~$Referral$_internal_binary_Deploy(msg);
+        return (self, true);
+    }
+    
+    ;; Text Receivers
+    if (op == 0) {
+        var text_op = slice_hash(in_msg);
+        
+        ;; Receive "Reward" message
+        if (text_op == 0xf3a89b1e1fcd95302485a334adff0358a844d4f035b971c74cfdaa37ac5c140b) {
+            self~$Referral$_internal_text_f3a89b1e1fcd95302485a334adff0358a844d4f035b971c74cfdaa37ac5c140b();
+            return (self, true);
+        }
+        
+        ;; Receive "Return" message
+        if (text_op == 0x6ef41a1603279cbd03396d3a3593d3f465c968554125a8b39067ebfc8b060d65) {
+            self~$Referral$_internal_text_6ef41a1603279cbd03396d3a3593d3f465c968554125a8b39067ebfc8b060d65();
+            return (self, true);
+        }
+        
+        ;; Receive "Contribute" message
+        if (text_op == 0xa3677a10b380dd94931e32fde88aaf77059d02a6762344ce67b22a668aa7a199) {
+            self~$Referral$_internal_text_a3677a10b380dd94931e32fde88aaf77059d02a6762344ce67b22a668aa7a199();
+            return (self, true);
+        }
+    }
+    
+    return (self, false);
+}
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    var msg_flags = cs~load_uint(4);
+    var msg_bounced = -(msg_flags & 1);
+    slice msg_sender_addr = __tact_verify_address(cs~load_msg_addr());
+    __tact_context = (msg_bounced, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var self = $Referral$_contract_load();
+    
+    ;; Handle operation
+    int handled = self~$Referral$_contract_router_internal(msg_bounced, in_msg);
+    
+    ;; Throw if not handled
+    throw_unless(130, handled);
+    
+    ;; Persist state
+    $Referral$_contract_store(self);
+}

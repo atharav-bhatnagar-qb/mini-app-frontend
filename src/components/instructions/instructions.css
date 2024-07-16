@@ -1,0 +1,12 @@
+.instruction-cont{
+    @apply text-white w-[90%] min-w-[280px] min-h-[70vh]
+}
+.ins-title{
+    @apply font-semibold mb-6
+}
+.ins-list{
+    @apply my-5 list-disc
+}
+.ins-item{
+    @apply ml-5 font-light mb-3
+}

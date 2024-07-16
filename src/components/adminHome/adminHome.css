@@ -1,0 +1,63 @@
+.ah-header{
+    @apply flex items-end justify-between w-[90%] text-white
+}
+.ah-welcome{
+    @apply font-medium
+}
+.ah-logout{
+    @apply font-light text-sm border-[0.5px] rounded-lg border-white py-2 px-6
+}
+.hr1{
+    @apply border-t-[0.1px] border-t-white w-[100%] mt-4 mb-7
+}
+.ah-cj-btn{
+    @apply text-white w-[80%] bg-gradient-to-r from-green-grad1 to-green-grad2 border-green-grad1 border-[0.5px] text-center text-base font-medium py-3 px-7 my-3  rounded-2xl
+}
+.ah-bounty-card{
+    @apply mt-6 mb-3 h-[100px] w-full bg-blue-grad1 flex items-center relative
+}
+.ah-bounty-img{
+    @apply h-[105%] mt-[2.5%] ml-[-10%] z-20
+}
+.ah-bc-text-cont{
+    @apply text-white flex flex-col h-[55%] items-start justify-between ml-[12%]
+}
+.ah-bc-title{
+    @apply text-xl font-semibold
+}
+.ah-bc-link{
+    @apply text-sm underline opacity-80
+}
+.ah-bc-grad{
+    @apply absolute h-full w-[200px] bg-gradient-radial from-gold to-transparent left-[-15%]  blur-xl
+}
+.ah-vj-btn{
+    @apply bg-blue-grad1 text-white w-[90%] py-3 text-xl font-semibold z-10
+}
+
+/* table  */
+
+.ah-table-cont{
+    @apply flex flex-col items-center bg-blue-grad1 w-full text-white py-4 my-3
+}
+.ah-table-header{
+    @apply flex w-[90%] justify-between items-center mb-4 z-10
+}
+.ah-table-title{
+    @apply font-semibold
+}
+.ah-table-link{
+    @apply text-sm opacity-80 underline
+}
+.ah-table-row{
+    @apply flex items-center justify-between w-[80%]
+}
+.ah-row-text{
+    @apply text-sm min-w-[20%]
+}
+.ah-row-ref{
+    @apply text-sm opacity-80
+}
+.ah-table-hr{
+    @apply h-[0.5px] bg-white w-[80%] my-2 opacity-40 
+}

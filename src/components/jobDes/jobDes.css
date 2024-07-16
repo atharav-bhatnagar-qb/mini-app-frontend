@@ -1,0 +1,105 @@
+.job-des-main{
+    @apply relative bg-blue-grad2 flex flex-col items-center py-10 min-h-screen w-screen 
+}
+.jd-sec-title{
+    @apply font-semibold text-black
+}
+.jd-small-text{
+    @apply text-xs text-black font-light leading-5
+}
+.jd-small-title{
+    @apply text-xs text-black font-semibold leading-5
+}
+.jd-tag-text{
+    @apply text-xs
+}
+.jd-tag-icon{
+    @apply text-sm mr-[5px]
+}
+
+/* back icon  */
+
+.jd-back-icon-cont{
+    @apply w-[90%] z-10
+}
+.jd-back-icon{
+    @apply text-4xl text-white z-10
+}
+
+/* main des  */
+
+.jd-main-des-cont{
+    @apply relative flex flex-col px-4 mb-4 mt-8  rounded-2xl pt-7 pb-4 w-[90%] items-start gap-3 bg-white
+}
+.jd-comp-img{
+    @apply w-[50px] h-[50px] absolute top-[-25px] bg-white rounded-full
+}
+.jd-main-des-subtitle{
+    @apply text-xs text-gray-skill  leading-5
+}
+.jd-line{
+    @apply bg-black h-[1px] w-full
+}
+.jd-static-tag-cont{
+    @apply flex flex-wrap gap-x-4 gap-y-1 mt-4
+}
+.jd-static-tag-item{
+    @apply flex items-center justify-start text-black mb-2
+}
+.jd-custom-tag-cont{
+    @apply flex flex-wrap gap-x-4 gap-y-3 mb-4  
+}
+
+/* refer job  */
+.jd-refer-job-cont{
+    @apply flex flex-col px-4 mb-4  rounded-2xl py-4 w-[90%] items-start gap-3 bg-white
+}
+.jd-refer-btn{
+    @apply py-2 px-3 text-green-grad1 text-sm border-[0.5px] rounded-full border-green-grad1
+}
+.jd-ref-link-cont{
+    @apply w-[90%] flex flex-col items-center
+}
+.jd-ref-link-item{
+    @apply flex items-start  w-full justify-between mb-5
+}
+.jd-ref-link-text{
+    @apply text-xs font-semibold max-w-[80%]
+}
+.jd-copy-icon{
+    @apply text-black text-xl cursor-pointer
+}
+/* applicant requiremnets  */
+
+.jd-applicant-req-cont{
+    @apply flex flex-col px-4 mb-4 rounded-2xl py-4 w-[90%] items-start gap-3 bg-white 
+}
+.jd-skill-cont{
+    @apply flex flex-wrap gap-3
+}
+.jd-skill-tag{
+    @apply px-2 py-1 text-xs bg-gray-light text-gray-skill font-semibold rounded-full
+}
+
+/* view applicants */
+.jd-view-applicant-btn{
+    @apply mb-4 w-[90%] rounded-2xl bg-white text-black font-semibold py-4
+}
+
+/* about the company  */
+
+.jd-about-comp-cont{
+    @apply flex flex-col px-4  rounded-2xl py-4 w-[90%] items-start gap-3 bg-white mb-10
+}
+
+/* Application div  */
+
+.jd-app-cont{
+    @apply bg-white flex justify-around fixed bottom-0 w-full py-3
+}
+.jd-app-refer-btn{
+    @apply w-[30%] py-2 font-semibold text-green-grad2 rounded-xl border-green-grad1 border-[1px]
+}
+.jd-app-apply-btn{
+    @apply w-[30%] py-2 font-semibold text-white rounded-xl bg-gradient-to-r from-green-grad1 to-green-grad2
+}

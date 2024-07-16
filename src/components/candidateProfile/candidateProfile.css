@@ -1,0 +1,21 @@
+.can-pro-cont{
+    @apply min-h-[70vh] flex flex-col items-center bg-gradient-to-r from-blue-grad1 to-blue-grad2 rounded-3xl py-6 w-[90%] min-w-[300px] text-white
+}
+.can-pro-title{
+    @apply text-2xl font-semibold my-5
+}
+.can-pro-card{
+    @apply w-[90%] flex flex-col items-center py-3 bg-blue-grad1 rounded-2xl shadow-lg shadow-blue-grad2 pl-6
+}
+.can-pro-item{
+    @apply flex items-start justify-start w-[95%] my-5
+}
+.can-pro-item-text{
+    @apply font-medium min-w-[30%] flex
+}
+.can-pro-skill-cont{
+    @apply flex flex-wrap gap-2 
+}
+.can-pro-skill-item{
+    @apply text-xs bg-gray-skill py-1 px-2 rounded-full
+}

@@ -1,0 +1,131 @@
+/* re-useable  */
+
+.create-job-cont{
+    @apply min-h-[70vh] flex flex-col items-center bg-gradient-to-r from-blue-grad1 to-blue-grad2 rounded-3xl py-6  w-[90%] min-w-[300px] text-white
+}
+.create-job-header1{
+    @apply w-[85%] flex justify-center relative items-center mb-4
+}
+.create-job-back-icon1{
+    @apply text-white text-4xl absolute left-0
+}
+.create-job-title{
+    @apply text-2xl font-semibold
+}
+.create-job-submit-btn{
+    @apply bg-gradient-to-r from-green-grad1 to-green-grad2 border-green-grad1 border-[0.5px] text-center text-base font-medium py-3 px-7 mb-1 mt-1  rounded-2xl
+}
+.create-job-header2{
+    @apply w-[85%] flex justify-start  items-center mb-4
+}
+.create-job-back-icon2{
+    @apply text-white text-4xl mr-7
+}
+/* 1  */
+
+.create-job1-form{
+    @apply flex flex-col items-center w-full my-6
+}
+.cj1-logo-cont{
+    @apply flex flex-col items-center
+}
+.cj1-logo-label{
+    @apply mt-1
+}
+.cj1-logo-icon{
+    @apply text-4xl
+}
+.cj1-logo{
+    @apply bg-blue-grad1 w-[100px] h-[100px] rounded-full flex justify-center items-center border-[1px] border-white
+}
+.cj1-inp-item{
+    @apply mb-5 w-[90%]
+}
+.cj1-inp-label{
+    @apply mb-1
+}
+.cj1-inp{
+    @apply w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3
+}
+.cj1-comp-logo{
+    @apply w-[100px] h-[100px] object-cover rounded-full border-[1px] border-white
+}
+/* 2  */
+
+.cj2-form-cont{
+    @apply flex flex-col items-center w-full my-6
+}
+.cj2-form-item{
+    @apply mb-5 w-[90%]
+}
+.cj2-form-item-label{
+    @apply mb-1
+}
+.cj2-big-inp{
+    @apply text-sm w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3   
+}
+.cj2-skill-inp-cont{
+    @apply pr-[5px] text-sm flex justify-between items-center  w-full border-[1px] border-white bg-blue-grad1 rounded-xl 
+}
+.cj2-skill-inp{
+    @apply text-sm w-[80%] bg-blue-grad1 py-3 rounded-xl px-3  border-none
+}
+.cj2-skill-add-btn{
+    @apply text-4xl cursor-pointer
+}
+.cj2-skill-cont{
+    @apply w-full flex flex-wrap gap-x-4 gap-y-3 my-4
+}
+.cj2-skill-item{
+    @apply text-sm bg-gray-light text-black py-1 px-3 font-semibold rounded-full
+}
+
+.cj2-tag-inp-cont{
+    @apply w-[80%] flex items-center justify-between
+}
+.cj2-tag-inp{
+    @apply text-sm w-[70%] bg-blue-grad1 py-3 rounded-xl px-3  border-white border-[1px]
+}
+.cj2-tag-add-btn{
+    @apply text-5xl cursor-pointer
+
+}
+.cj2-tag-cont{
+    @apply w-full flex flex-wrap gap-x-4 gap-y-3 my-4 
+}
+.cj2-tag-item{
+    @apply text-sm bg-gray-light text-black py-1 px-3 font-semibold rounded-full 
+}
+
+/* 3 */
+
+.cj3-form{
+    @apply flex flex-col items-center w-full my-6
+}
+.cj3-item{
+    @apply mb-3 w-[90%]
+}
+.cj3-label{
+    @apply mt-1
+}
+.cj3-inp{
+    @apply text-sm w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3
+}
+
+/* indicator  */
+
+.cj-page-ind{
+    @apply w-[90%] flex items-center my-6
+}
+.cj-num{
+    @apply flex flex-col items-center justify-center font-medium rounded-full w-[30px] h-[30px]  text-blue-grad2 bg-white
+}
+.cj-num2{
+    @apply flex flex-col items-center justify-center font-medium rounded-full w-[30px] h-[30px]  text-white bg-transparent border-white border-[0.5px]
+}
+.cj-dash{
+    @apply w-[calc(50%-(90px/2))] border-dashed border-t-white border-[0.1px]
+}
+.cj-line{
+    @apply w-[calc(50%-(90px/2))]  border-t-white border-[0.1px]
+}

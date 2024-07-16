@@ -1,0 +1,18 @@
+.register-form{
+    @apply text-white bg-gradient-to-r from-blue-grad1 to-blue-grad2 rounded-3xl w-[90%] min-w-[300px] flex flex-col items-center py-10
+}
+.register-title{
+    @apply font-semibold text-2xl mb-6
+}
+.register-inp-cont{
+    @apply w-[90%] mb-4
+}
+.register-label{
+    @apply mb-1 text-base
+}
+.register-inp{
+    @apply w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3
+}
+.register-submit-btn{
+    @apply bg-gradient-to-r from-green-grad1 to-green-grad2 border-green-grad1 border-2 text-center text-base font-medium py-2 px-7 mb-6 mt-8  rounded-2xl
+}

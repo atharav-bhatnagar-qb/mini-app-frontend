@@ -60,9 +60,13 @@ const Intro = () => {
     <div className='intro-pg'>
         <img src='coinTop.png' className='intro-coins-top'/>
         <div className="intro-head">
-            <h1 className="intro-title">
-                UNLOCK <br/> EARNINGS
-            </h1>
+            <div className="intro-title">
+                <div className='intro-title1'>
+                    UNL
+                    <img src="coin1.png" alt="coin" className="intro-title-coin" />
+                    CK
+                </div> EARNINGS
+            </div>
             <h4 className="intro-subtitle">
             Refer Job Opportunities!
             </h4>

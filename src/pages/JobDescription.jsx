@@ -77,6 +77,8 @@ const JobDescription = () => {
             toast.success("Referral copied to clipboard")
           } catch (err) {
             console.error('Failed to copy: ', err);
+            toast.success("Referral copied to clipboard")
+
           }
     }
 

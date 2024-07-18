@@ -7,7 +7,7 @@
     @apply w-[85%] flex justify-center relative items-center mb-4
 }
 .create-job-back-icon1{
-    @apply text-white text-4xl absolute left-0
+    @apply text-white text-4xl absolute left-0 z-10
 }
 .create-job-title{
     @apply text-2xl font-semibold
@@ -65,13 +65,16 @@
     @apply text-sm w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3   
 }
 .cj2-skill-inp-cont{
-    @apply pr-[5px] text-sm flex justify-between items-center  w-full border-[1px] border-white bg-blue-grad1 rounded-xl 
+    @apply mt-2 w-[80%] flex items-center justify-between
+    /* @apply pr-[5px] text-sm flex justify-between items-center  w-full border-[1px] border-white bg-blue-grad1 rounded-xl  */
 }
 .cj2-skill-inp{
-    @apply text-sm w-[80%] bg-blue-grad1 py-3 rounded-xl px-3  border-none
+    @apply text-sm w-[70%] bg-blue-grad1 py-3 rounded-xl px-3  border-white border-[1px]
+    /* @apply text-sm w-[80%] bg-blue-grad1 py-3 rounded-xl px-3  border-none */
 }
 .cj2-skill-add-btn{
-    @apply text-4xl cursor-pointer
+    @apply text-5xl cursor-pointer
+    /* @apply text-4xl cursor-pointer */
 }
 .cj2-skill-cont{
     @apply w-full flex flex-wrap gap-x-4 gap-y-3 my-4
@@ -81,7 +84,7 @@
 }
 
 .cj2-tag-inp-cont{
-    @apply w-[80%] flex items-center justify-between
+    @apply mt-2 w-[80%] flex items-center justify-between
 }
 .cj2-tag-inp{
     @apply text-sm w-[70%] bg-blue-grad1 py-3 rounded-xl px-3  border-white border-[1px]

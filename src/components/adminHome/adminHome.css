@@ -5,7 +5,7 @@
     @apply font-medium
 }
 .ah-logout{
-    @apply font-light text-sm border-[0.5px] rounded-lg border-white py-2 px-6
+    @apply z-10 font-light text-sm border-[0.5px] rounded-lg border-white py-2 px-6
 }
 .hr1{
     @apply border-t-[0.1px] border-t-white w-[100%] mt-4 mb-7

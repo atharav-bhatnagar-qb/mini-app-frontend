@@ -7,24 +7,32 @@ import { imageDB } from '../../../firebaseConfig';
 import toast from 'react-hot-toast';
 import { v4 } from 'uuid';
 
-const CreateJob1 = ({setScreen,setNewJob,newJob,nav}) => {
-    const [img,setImg]=useState("")
+const CreateJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
+    const [img,setImg]=useState(newJob.logo)
 
     async function nextScreen(){
         try{
+            setLoading(true)
             if(img==""){
                 toast.error("Please choose a company image!")
                 return
             }
+            if(typeof img=="string"){
+                setScreen(2)
+                return
+            }
             let url=await uploadImage(img)
+            setLoading(false)
             setNewJob({...newJob,logo:url})
             setScreen(2)
         }catch(err){
             console.log(err)
+            setLoading(false)
         }
     }
 
     async function uploadImage(uri){
+        
         return new Promise(async(resolve,reject)=>{
           const storageRef = ref(imageDB, 'userImage/' + v4());
           const uploadTask = uploadBytesResumable(storageRef,uri);
@@ -85,7 +93,7 @@ const CreateJob1 = ({setScreen,setNewJob,newJob,nav}) => {
                         document.getElementById('job-img').click()
                     }} 
                     className='cj1-comp-logo' 
-                    src={URL.createObjectURL(img)} 
+                    src={(typeof img =="string")?img:URL.createObjectURL(img)} 
                     alt="ksk" 
                 />
 
@@ -95,25 +103,25 @@ const CreateJob1 = ({setScreen,setNewJob,newJob,nav}) => {
                 <p className="cj1-inp-label">
                 Job Title
                 </p>
-                <input onChange={(e)=>setNewJob({...newJob,title:e.target.value})} type="text" className="cj1-inp" />
+                <input value={newJob.title} onChange={(e)=>setNewJob({...newJob,title:e.target.value})} type="text" className="cj1-inp" />
             </div>
             <div className="cj1-inp-item">
                 <p className="cj1-inp-label">
                 Company Name
                 </p>
-                <input onChange={(e)=>setNewJob({...newJob,company:e.target.value})} type="text" className="cj1-inp" />
+                <input value={newJob.company} onChange={(e)=>setNewJob({...newJob,company:e.target.value})} type="text" className="cj1-inp" />
             </div>
             <div className="cj1-inp-item">
                 <p className="cj1-inp-label">
                 Enter Bounty Prize In Dollar
                 </p>
-                <input onChange={(e)=>setNewJob({...newJob,bounty:e.target.value})} type="text" className="cj1-inp" />
+                <input  value={newJob.bounty} onChange={(e)=>setNewJob({...newJob,bounty:e.target.value})} type="number" className="cj1-inp" />
             </div>
             <div className="cj1-inp-item">
                 <p className="cj1-inp-label">
                 Add Job Details
                 </p>
-                <input onChange={(e)=>setNewJob({...newJob,jobDetail:e.target.value})} type="text" className="cj1-inp" />
+                <input value={newJob.jobDetail} onChange={(e)=>setNewJob({...newJob,jobDetail:e.target.value})} type="text" className="cj1-inp" />
             </div>
             <button className="create-job-submit-btn" onClick={nextScreen}>
                 Next

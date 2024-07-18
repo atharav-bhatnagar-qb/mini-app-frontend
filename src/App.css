@@ -22,3 +22,9 @@ body{
 .coin-btm{
   @apply absolute bottom-0 w-full h-[100px] opacity-30 z-0
 }
+.loader-cont{
+  @apply h-screen w-screen flex items-center justify-center
+}
+.loader-icon{
+  
+}

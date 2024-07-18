@@ -5,8 +5,8 @@ import { PiPlusCircleFill } from "react-icons/pi";
 
 const CreateJob2 = ({setScreen,setNewJob,newJob,nav}) => {
 
-  const [skills,setSkills]=useState([])
-  const [tags,setTags]=useState([])
+  const [skills,setSkills]=useState(newJob.skills)
+  const [tags,setTags]=useState(newJob.tags)
 
   const updateSkills=()=>{
     const skillInp=document.getElementsByClassName('cj2-skill-inp')[0]
@@ -78,7 +78,7 @@ const CreateJob2 = ({setScreen,setNewJob,newJob,nav}) => {
               <p className="cj-form-item-label">
                 About Company
               </p>
-              <textarea onChange={(e)=>setNewJob({...newJob,aboutCompany:e.target.value})}  rows={4} className="cj2-big-inp"/>
+              <textarea value={newJob.aboutCompany} onChange={(e)=>setNewJob({...newJob,aboutCompany:e.target.value})}  rows={4} className="cj2-big-inp"/>
             </div>
             <button className="create-job-submit-btn" onClick={()=>setScreen(3)}>
                 ADD MORE DETAILS

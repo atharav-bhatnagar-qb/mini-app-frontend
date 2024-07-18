@@ -7,8 +7,11 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { baseURL } from '../utils/context'
 import toast from 'react-hot-toast'
+import ReactModal from 'react-modal'
+import Loader from '../components/reusables/Loader'
 
 const CreateJob = () => {
+  const [loading,setLoading]=useState(false)
   const [screen,setScreen]=useState(1)
   const [newJob,setNewJob]=useState({
     title:"",
@@ -43,6 +46,7 @@ const CreateJob = () => {
   }
   return (
     <div className='page'>
+      <img src="coinTop.png" alt="coin top" className='coin-top' />
         {
           screen==1?
             <CreateJob1
@@ -50,6 +54,7 @@ const CreateJob = () => {
               setNewJob={setNewJob}
               newJob={newJob}
               nav={nav}
+              setLoading={setLoading}
             />
           :
           screen==2?
@@ -68,6 +73,16 @@ const CreateJob = () => {
               nav={nav}
             />
         }
+        <ReactModal
+          isOpen={loading}
+          className='modal'
+          ariaHideApp={false}
+          style={{ 
+              overlay: { backdropFilter: 'blur(3px)' , zIndex:50, backgroundColor:'rbg(0,0,0,0%)'}, 
+          }}>
+            <Loader/>
+          </ReactModal> 
+        <img src="coinBtm.png" alt="coin bottom" className="coin-btm" />
     </div>
   )
 }

@@ -19,13 +19,13 @@ const CreateJob3 = ({setScreen,setNewJob,newJob,createNewJob,nav}) => {
                 <p className="cj3-label">
                     Candidate requirements
                 </p>
-                <textarea onChange={(e)=>setNewJob({...newJob,candidateReq:e.target.value})} rows={4} className="cj3-inp"/>
+                <textarea value={newJob.candidateReq} onChange={(e)=>setNewJob({...newJob,candidateReq:e.target.value})} rows={4} className="cj3-inp"/>
             </div>
             <div className="cj3-item">
                 <p className="cj3-label">
                     Job requirements
                 </p>
-                <textarea onChange={(e)=>setNewJob({...newJob,jobReq:e.target.value})} rows={4}  className="cj3-inp"/>
+                <textarea value={newJob.jobReq} onChange={(e)=>setNewJob({...newJob,jobReq:e.target.value})} rows={4}  className="cj3-inp"/>
             </div>
         </div>
         <button className="create-job-submit-btn" onClick={()=>{

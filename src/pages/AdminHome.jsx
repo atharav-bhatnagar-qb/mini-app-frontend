@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import '../components/adminHome/adminHome.css'
 import { useNavigate } from 'react-router-dom'
 import { TonContext, useTon } from '../utils/context'
+import { useTonConnectUI } from '@tonconnect/ui-react'
 
 const top=[
     {
@@ -34,13 +35,18 @@ const AdminHome = () => {
     const nav=useNavigate()
     const tonAuth=useContext(TonContext)
     console.log("tonauth",tonAuth?.user)
+    const [tonConnectUI]=useTonConnectUI()
+
 
   return (
     <div className='page'>
         <img src='coinTop.png' alt='top' className='coin-top'/>
         <div className="ah-header">
             <h1 className="ah-welcome">Welcome Admin,</h1>
-            <button className="ah-logout">Logout</button>
+            <button className="ah-logout" onClick={async()=>{
+                await tonConnectUI.disconnect()
+                nav('/')
+            }}>Logout</button>
         </div>
         <div className="hr1"></div>
         <button className="ah-cj-btn" onClick={()=>nav('/createJob')}>

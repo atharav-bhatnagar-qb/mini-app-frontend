@@ -45,7 +45,7 @@
     @apply mb-1
 }
 .cj1-inp{
-    @apply w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3
+    @apply z-10 w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3
 }
 .cj1-comp-logo{
     @apply w-[100px] h-[100px] object-cover rounded-full border-[1px] border-white
@@ -62,14 +62,14 @@
     @apply mb-1
 }
 .cj2-big-inp{
-    @apply text-sm w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3   
+    @apply z-10 text-sm w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3   
 }
 .cj2-skill-inp-cont{
     @apply mt-2 w-[80%] flex items-center justify-between
     /* @apply pr-[5px] text-sm flex justify-between items-center  w-full border-[1px] border-white bg-blue-grad1 rounded-xl  */
 }
 .cj2-skill-inp{
-    @apply text-sm w-[70%] bg-blue-grad1 py-3 rounded-xl px-3  border-white border-[1px]
+    @apply z-10 text-sm w-[70%] bg-blue-grad1 py-3 rounded-xl px-3  border-white border-[1px]
     /* @apply text-sm w-[80%] bg-blue-grad1 py-3 rounded-xl px-3  border-none */
 }
 .cj2-skill-add-btn{
@@ -84,10 +84,10 @@
 }
 
 .cj2-tag-inp-cont{
-    @apply mt-2 w-[80%] flex items-center justify-between
+    @apply mt-2 w-[80%] flex items-center justify-between 
 }
 .cj2-tag-inp{
-    @apply text-sm w-[70%] bg-blue-grad1 py-3 rounded-xl px-3  border-white border-[1px]
+    @apply z-10 text-sm w-[70%] bg-blue-grad1 py-3 rounded-xl px-3  border-white border-[1px]
 }
 .cj2-tag-add-btn{
     @apply text-5xl cursor-pointer
@@ -112,7 +112,7 @@
     @apply mt-1
 }
 .cj3-inp{
-    @apply text-sm w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3
+    @apply z-10 text-sm w-full border-[1px] border-white bg-blue-grad1 py-2 rounded-xl px-3
 }
 
 /* indicator  */

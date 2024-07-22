@@ -1,5 +1,5 @@
 body{
-  @apply min-h-screen min-w-[100vw] overflow-x-hidden ;
+  @apply min-h-screen min-w-[100vw] overflow-x-hidden bg-blue-bg ;
   /* ::-webkit-scrollbar {display:none;} */
 }
 

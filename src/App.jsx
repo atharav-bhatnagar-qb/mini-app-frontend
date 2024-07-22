@@ -15,6 +15,7 @@ import CreateJob from './pages/CreateJob'
 import AdminHome from './pages/AdminHome'
 import JobListing from './pages/JobListing'
 import JobDescription from './pages/JobDescription'
+import Profile from './pages/Profile'
 window.Buffer = window.Buffer || require("buffer").Buffer; 
 
 
@@ -26,6 +27,7 @@ const App = () => {
     <TonProvider>
     <Router className='w-screen'>
       <Routes>
+        {/* <Route path='/' element={<Profile/>}/> */}
         <Route path='/' element={<Intro/>}/>
         <Route path='/adminHome' element={<AdminHome/>}/>
         <Route path='/createJob' element={<CreateJob/>}/>

@@ -95,7 +95,7 @@
 /* Application div  */
 
 .jd-app-cont{
-    @apply bg-white flex justify-around fixed bottom-0 w-full py-3
+    @apply bg-white flex justify-around fixed bottom-0 w-full py-3 shadow-2xl shadow-inner
 }
 .jd-app-refer-btn{
     @apply w-[30%] py-2 font-semibold text-green-grad2 rounded-xl border-green-grad1 border-[1px]

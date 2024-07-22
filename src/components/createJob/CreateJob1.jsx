@@ -12,13 +12,26 @@ const CreateJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
 
     async function nextScreen(){
         try{
+            if(newJob.company==""||newJob.title==""||newJob.bounty==""||newJob.jobDetail==""){
+                toast.error("Please do not leave any fields empty!")
+                return
+            }
             setLoading(true)
             if(img==""){
                 toast.error("Please choose a company image!")
+                setLoading(false)
+
+                return
+            }
+            if(newJob.bounty=="0"){
+                toast.error("Bounty price cannot be 0!")
+                setLoading(false)
                 return
             }
             if(typeof img=="string"){
                 setScreen(2)
+                 setLoading(false)
+
                 return
             }
             let url=await uploadImage(img)
@@ -45,12 +58,14 @@ const CreateJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
               console.log('Upload is ' + progress + '% done');
             },
             error => {
+                setLoading(false)
               console.log('Error => ', error);
               reject(new Error("Some error occured while trying to upload images"))
             },
             () => {
               getDownloadURL(uploadTask.snapshot.ref).then(async downloadURL => {
                 console.log('File available at', downloadURL);
+                setLoading(false)
                 resolve(downloadURL)
               });
             },
@@ -115,7 +130,18 @@ const CreateJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
                 <p className="cj1-inp-label">
                 Enter Bounty Prize In Dollar
                 </p>
-                <input  value={newJob.bounty} onChange={(e)=>setNewJob({...newJob,bounty:e.target.value})} type="number" className="cj1-inp" />
+                <input  
+                    value={newJob.bounty} 
+                    onChange={(e)=>{
+                            if(parseInt(e.target.value)<0){
+                                return
+                            }
+                            setNewJob({...newJob,bounty:e.target.value})
+                        }
+                    } 
+                    type="number" 
+                    className="cj1-inp" 
+                />
             </div>
             <div className="cj1-inp-item">
                 <p className="cj1-inp-label">

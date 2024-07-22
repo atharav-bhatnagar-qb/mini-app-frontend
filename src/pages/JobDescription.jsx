@@ -138,7 +138,7 @@ const JobDescription = () => {
             </p>
         </div>
         <div className="jd-refer-job-cont">
-            <p className="jd-sec-title">Refer Job</p>
+            <a  className="jd-sec-title">Refer Job</a>
             {
                 links?.length>0?
                 <>
@@ -166,7 +166,7 @@ const JobDescription = () => {
                 </>
                 :
                 <>
-                    <p className="jd-small-text">
+                    <p className="jd-small-text" id='refer-ref'>
                         Refer this job, compete against other users and earn you rewards ! 
                     </p>
                     <button className="jd-refer-btn" onClick={generateLink}>
@@ -219,7 +219,10 @@ const JobDescription = () => {
             </p>
         </div>
         <div className="jd-app-cont">
-            <button className="jd-app-refer-btn">Refer Job</button>
+            <button className="jd-app-refer-btn" onClick={()=>{
+                nav('/jobDetails#refer-ref')
+                toast.success("Generate referrals or share the existing ones")
+            }}>Refer Job</button>
             <button className="jd-app-apply-btn" onClick={()=>nav('/apply')}>Apply</button>
         </div>
     </div>

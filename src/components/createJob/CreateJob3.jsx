@@ -1,8 +1,18 @@
 import React from 'react'
 import { LuArrowLeft } from 'react-icons/lu'
 import CreatePageIndicator from './CreatePageIndicator'
+import toast from 'react-hot-toast'
 
 const CreateJob3 = ({setScreen,setNewJob,newJob,createNewJob,nav}) => {
+
+    const nextScreen=()=>{
+        if(newJob.candidateReq==""||newJob.jobReq==""){
+            toast.error("Please do not leave any field empty")
+            return
+        }
+        console.log("newjob : ",newJob)
+        createNewJob()
+    }
 
     
   return (
@@ -28,11 +38,7 @@ const CreateJob3 = ({setScreen,setNewJob,newJob,createNewJob,nav}) => {
                 <textarea value={newJob.jobReq} onChange={(e)=>setNewJob({...newJob,jobReq:e.target.value})} rows={4}  className="cj3-inp"/>
             </div>
         </div>
-        <button className="create-job-submit-btn" onClick={()=>{
-            console.log(newJob)
-            // setScreen(1)
-            createNewJob()
-        }}>
+        <button className="create-job-submit-btn" onClick={nextScreen}>
             CREATE JOB LISTING
         </button>
     </div>

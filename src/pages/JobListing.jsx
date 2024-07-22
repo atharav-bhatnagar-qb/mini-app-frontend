@@ -7,6 +7,8 @@ import { TonContext, baseURL, useTon } from '../utils/context';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { IoIosSearch } from "react-icons/io";
+import { useTonConnectUI } from '@tonconnect/ui-react';
+import { useTonConnect } from '../utils/useTonConnect';
 
 const marText="Total Prize Distributed 1200 Bounties . Total Referrals this week 15,000 . Total Prize Distributed 1200 Bounties"
 
@@ -16,6 +18,9 @@ const JobListing = () => {
     const tonAuth=useContext(TonContext)
     console.log(tonAuth?.user)
     const [jobs,setJobs]=useState()
+    const [tonConnectUI]=useTonConnectUI()
+    const [disconnectOpen,setDisconnectOpen]=useState(false)
+    const {wallet}=useTonConnect()
 
     async function getJobs(){
         try{
@@ -88,10 +93,22 @@ const JobListing = () => {
                     :
                     <>
                         <HiOutlineUser className='jl-user-btn-icon'/>
-                        <p className="jl-user-btn-name">
-                            qsqsqsjan...
+                        <p className="jl-user-btn-name cursor-pointer" onClick={()=>{
+
+                            setDisconnectOpen(!disconnectOpen)
+                        }}>
+                            {wallet?.toString()?.substring(0,12)}...
                         </p>
                         <p className="jl-user-btn-rating">#25</p>
+                        {
+                            disconnectOpen?
+                            <p className='jl-user-btn-option' onClick={async()=>{
+                                await tonConnectUI.disconnect()
+                                nav('/')
+                            }}>Disconnect</p>
+                            :
+                            <></>
+                        }
                     </>
                 }
                 

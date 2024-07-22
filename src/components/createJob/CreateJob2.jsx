@@ -2,11 +2,31 @@ import React, { useState } from 'react'
 import { LuArrowLeft } from 'react-icons/lu'
 import CreatePageIndicator from './CreatePageIndicator'
 import { PiPlusCircleFill } from "react-icons/pi";
+import toast from 'react-hot-toast';
 
 const CreateJob2 = ({setScreen,setNewJob,newJob,nav}) => {
 
   const [skills,setSkills]=useState(newJob.skills)
   const [tags,setTags]=useState(newJob.tags)
+
+  const nextScreen=()=>{
+    console.log("executing next scree")
+    console.log(newJob)
+    if(newJob.skills.length==0){
+      toast.error("Please add atleast one skill")
+      return
+    }
+    if(newJob.tags.length==0){
+      toast.error("Please attach atleast one tag")
+      return
+    }
+    if(newJob.aboutCompany==""){
+      console.log(newJob.tags.length==0,newJob.skills)
+      toast.error("Describe something about the company as well")
+      return
+    }
+    setScreen(3)
+  }
 
   const updateSkills=()=>{
     const skillInp=document.getElementsByClassName('cj2-skill-inp')[0]
@@ -80,7 +100,7 @@ const CreateJob2 = ({setScreen,setNewJob,newJob,nav}) => {
               </p>
               <textarea value={newJob.aboutCompany} onChange={(e)=>setNewJob({...newJob,aboutCompany:e.target.value})}  rows={4} className="cj2-big-inp"/>
             </div>
-            <button className="create-job-submit-btn" onClick={()=>setScreen(3)}>
+            <button className="create-job-submit-btn" onClick={nextScreen}>
                 ADD MORE DETAILS
             </button>
         </div>

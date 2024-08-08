@@ -16,6 +16,9 @@ import AdminHome from './pages/AdminHome'
 import JobListing from './pages/JobListing'
 import JobDescription from './pages/JobDescription'
 import Profile from './pages/Profile'
+import ReferralApplications from './pages/ReferralApplications'
+import JobListingAdmin from './pages/JobListingAdmin'
+import EditJob from './pages/EditJob'
 window.Buffer = window.Buffer || require("buffer").Buffer; 
 
 
@@ -27,7 +30,7 @@ const App = () => {
     <TonProvider>
     <Router className='w-screen'>
       <Routes>
-        {/* <Route path='/' element={<Profile/>}/> */}
+        {/* <Route path='/' element={<ReferralList/>}/> */}
         <Route path='/' element={<Intro/>}/>
         <Route path='/adminHome' element={<AdminHome/>}/>
         <Route path='/createJob' element={<CreateJob/>}/>
@@ -37,6 +40,12 @@ const App = () => {
         <Route path='/candidateApplications' element={<CandidateApplications/>}/>
         <Route path='/candidateProfile' element={<CandidateProfile/>}/>
         <Route path='/apply' element={<ApplyForm/>}/>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/instructions' element={<Instructions/>}/>
+        <Route path='/userActiveRef' element={<ReferralList/>}/>
+        <Route path='/refApplications' element={<ReferralApplications/>}/>
+        <Route path='/adminJobListings' element={<JobListingAdmin/>}/>
+        <Route path='/adminEditJob' element={<EditJob/>}/>
       </Routes>
       <Toaster/>
     </Router>

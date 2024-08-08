@@ -17,22 +17,23 @@ const JobListing = () => {
     const nav=useNavigate()
     const tonAuth=useContext(TonContext)
     console.log(tonAuth?.user)
-    const [jobs,setJobs]=useState()
+    const [fJobs,setFJobs]=useState([])
+    const [nJobs,setNJobs]=useState([])
     const [tonConnectUI]=useTonConnectUI()
     const [disconnectOpen,setDisconnectOpen]=useState(false)
     const {wallet}=useTonConnect()
 
-    async function getJobs(){
+    async function getFeaturedJobs(){
         try{
-            console.log("getting jobs")
-            setJobs([])
-            await axios.get(`${baseURL}/getAllJobs`).then((res)=>{
+            console.log("getting featured jobs")
+            setFJobs([])
+            await axios.get(`${baseURL}/getFeatJobs`).then((res)=>{
                 console.log(res?.data,res?.data?.jobs!=undefined)
                 if(res?.data?.jobs!=undefined){
                   for(let i=res?.data?.jobs?.length-1;i>=0;i--){
-                      let newJob={...res?.data?.jobs[i],id:res?.data?.jobs[i]?.jobId}
+                      let newJob={...res?.data?.jobs[i]}
                       console.log(newJob)
-                      setJobs(j=>[...j,newJob])
+                      setFJobs(j=>[...j,newJob])
                   }
                 }
             }).catch((err)=>{
@@ -45,6 +46,32 @@ const JobListing = () => {
             toast.error("Something went wrong while getting the jobs !")
         }
     }
+
+
+    async function getUnFeaturedJobs(){
+        try{
+            console.log("getting unfeatured jobs")
+            setNJobs([])
+            await axios.get(`${baseURL}/getUnfeatJobs`).then((res)=>{
+                console.log(res?.data,res?.data?.jobs!=undefined)
+                if(res?.data?.jobs!=undefined){
+                  for(let i=res?.data?.jobs?.length-1;i>=0;i--){
+                      let newJob={...res?.data?.jobs[i]}
+                      console.log(newJob)
+                      setNJobs(j=>[...j,newJob])
+                  }
+                }
+            }).catch((err)=>{
+                console.log(err)
+                toast.error("Something went wrong while getting the jobs !")
+            })
+          
+        }catch(err){
+            console.log(err)
+            toast.error("Something went wrong while getting the jobs !")
+        }
+    }
+
     async function getUserDetails(){
         try{
             console.log("get user running")
@@ -70,9 +97,10 @@ const JobListing = () => {
         }
     }
     useEffect(()=>{
-        getJobs()
-        // getUserDetails()
+        getFeaturedJobs()
+        getUnFeaturedJobs()
     },[])
+
 
   return (
     <div className='job-listing-main-cont'>
@@ -99,13 +127,36 @@ const JobListing = () => {
                         }}>
                             {wallet?.toString()?.substring(0,12)}...
                         </p>
-                        <p className="jl-user-btn-rating">#25</p>
+                        <p className="jl-user-btn-rating">#{tonAuth?.user?.rank}</p>
                         {
                             disconnectOpen?
-                            <p className='jl-user-btn-option' onClick={async()=>{
-                                await tonConnectUI.disconnect()
-                                nav('/')
-                            }}>Disconnect</p>
+                            <div className='jl-user-btn-option-cont' onClick={()=>setDisconnectOpen(true)}>
+                                <p 
+                                    className="jl-user-btn-option" 
+                                    onClick={()=>nav('/profile')}
+                                    // onClick={()=>console.log("profile")}
+                                >
+                                    Profile
+                                </p>
+                                <hr />
+                                 <p 
+                                    className="jl-user-btn-option" 
+                                    onClick={()=>nav('/instructions')}
+                                    // onClick={()=>console.log("instructions")}
+                                 >
+                                    Instructions
+                                </p> 
+                                <hr />
+                                <p className="jl-user-btn-option"  
+                                onClick={async()=>{
+                                    await tonConnectUI.disconnect()
+                                    nav('/')
+                                    console.log("dei")
+                                }}
+                                >
+                                    Disconnect
+                                </p>
+                            </div>
                             :
                             <></>
                         }
@@ -133,7 +184,7 @@ const JobListing = () => {
             <h4 className="jl-f-title">Featured Jobs</h4>
             <div className="jl-jc-hlist">
                 {
-                    jobs?.map((job,index)=>(
+                    fJobs?.map((job,index)=>(
                         <JobCard key={index} job={job} nav={nav}/>
                     ))
                 }
@@ -142,7 +193,7 @@ const JobListing = () => {
         </div>
         <div className="jl-normaljob-cont">
             {
-                jobs?.map((job,index)=>(
+                nJobs?.map((job,index)=>(
                     <JobCard key={index} job={job} nav={nav}/>
                 ))
             }

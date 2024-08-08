@@ -31,8 +31,8 @@ const CandidateApplications = () => {
         try{
             setApplications([])
             let apl=[]
-            await axios.get(`${baseURL}/getApplications?jobID=${tonAuth?.job?.jobId}`).then(async(res)=>{
-                console.log(res?.data?.message)
+            await axios.get(`${baseURL}/getApplications?jobID=${tonAuth?.job?.id}`).then(async(res)=>{
+                console.log(res?.data)
                 if(res?.data?.message=="applications found"){
                     // setApplications(res?.data?.applications)
                     console.log(res?.data?.applications)

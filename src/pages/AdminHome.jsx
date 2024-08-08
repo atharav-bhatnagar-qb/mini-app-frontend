@@ -144,7 +144,7 @@ const AdminHome = () => {
                 ))
             }
         </div>
-        <button className="ah-vj-btn" onClick={()=>nav('/jobListing')}>
+        <button className="ah-vj-btn" onClick={()=>nav('/adminJobListings')}>
             VIEW JOBS
         </button>
         <img src='coinBtm.png' alt='top' className='coin-btm'/>

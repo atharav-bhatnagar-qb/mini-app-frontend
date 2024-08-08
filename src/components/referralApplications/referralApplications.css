@@ -1,0 +1,24 @@
+.ref-app-info-main-cont{
+    @apply mt-20 relative z-10 min-h-[70vh] flex flex-col items-center bg-gradient-to-r from-blue-grad1 to-blue-grad2 rounded-3xl py-6 w-[90%] min-w-[300px] text-white
+}
+.rai-title{
+    @apply text-2xl font-semibold my-5
+}
+.rai-job-ref-cont{
+    @apply flex flex-col items-start w-[90%]
+}
+.rai-job-ref-title{
+    @apply text-base my-4
+}
+.rai-candidate-card{
+    @apply border-[1px] z-10 w-full mb-3 bg-blue-grad1 rounded-2xl py-7 px-3 flex items-center justify-between shadow-blue-grad2 shadow-lg 
+}
+.rai-candidate-name{
+    @apply font-medium text-base
+}
+.rai-candidate-rating-cont{
+    @apply flex items-center text-center
+}
+.rai-non-link{
+    @apply text-white font-medium underline absolute bottom-4 my-4 cursor-pointer
+}

@@ -1,0 +1,113 @@
+.admin-job-listing-main-cont{
+    @apply bg-blue-grad2 text-white min-h-screen flex flex-col items-center py-[100px] relative 
+}
+
+/* header  */
+.ajl-header{
+    @apply flex justify-between items-center w-[90%] text-white
+}
+.ajl-title{
+    @apply text-3xl font-semibold
+}
+.ajl-user-icon{
+    @apply ml-3 mr-2
+}
+.ajl-user-btn{
+    @apply relative cursor-pointer min-w-[100px] flex justify-start items-center px-1 py-1 border-white rounded-lg border-[0.5px]
+}
+.ajl-user-btn-name{
+    @apply text-sm
+}
+
+/* search bar  */
+.ajl-search-cont{
+    @apply py-2 w-[90%] my-6 bg-white rounded-xl flex pl-4 justify-between
+}
+.ajl-search-icon{
+    @apply text-gray-skill text-4xl
+}
+.ajl-search-inp{
+    @apply text-black placeholder-gray-skill text-left text-sm w-[80%] px-3
+}
+
+/* featured cont  */
+.ajl-featured-cont1{
+    @apply flex flex-col items-start overflow-scroll min-h-[20vh] py-4 rounded-3xl w-full bg-gradient-to-r from-blue-grad1 to-transparent
+}
+.ajl-f-header{
+    @apply flex w-[90%] ml-[5%] justify-between
+}
+.ajl-f-title{
+    @apply font-semibold mb-6 
+}
+.ajl-f-btn{
+    @apply text-sm underline cursor-pointer
+}
+.ajl-jc-hlist{
+    @apply flex items-center overflow-scroll justify-center 
+}
+.ajl-jc-vlist{
+  @apply flex flex-col items-center overflow-scroll justify-center   
+}
+/* normal cont  */
+.ajl-normaljob-cont{
+    @apply flex py-4 flex-col gap-y-6 items-center w-[90%] rounded-3xl bg-blue-grad1  my-6 min-h-[20vh]
+}
+
+/* job card  */
+
+.ajl-job-card{
+    @apply cursor-pointer mx-[15px] min-w-[80vw] min-h-[150px] flex flex-col items-center justify-start relative
+}
+.ajc-bounty-cont{
+    @apply flex  px-3 py-1 rounded-t-2xl items-center w-[75%] bg-gradient-to-r from-green-grad1 to-green-grad2 justify-start
+}
+.ajc-bounty-text{
+    @apply font-light text-sm 
+}
+.ajc-bounty-icon{
+    @apply text-gold text-lg mr-4
+}
+.ajc-main-card{
+    @apply bg-white w-full rounded-2xl flex flex-col items-center py-3
+}
+.ajc-m-header{
+    @apply w-[85%] flex items-center justify-start text-black
+}
+.ajc-main-img{
+    @apply w-[45px] mr-[15px]
+}
+.ajc-mh-textcont{
+    @apply flex flex-col items-start
+}
+.ajc-mh-post{
+    @apply text-sm font-semibold
+}
+.ajc-mh-name{
+    @apply text-sm
+}
+.ajc-tag-cont{
+    @apply w-[90%] flex flex-col items-start pt-4
+}
+.ajc-tag-item{
+    @apply flex items-center justify-start text-black mb-2
+}
+.ajc-tag-icon{
+    @apply text-sm mr-[10px]
+}
+.ajc-tag-text{
+    @apply text-xs
+}
+
+.ajc-btm-edit{
+    @apply  flex items-center justify-between w-[30%] absolute text-black bottom-4 right-3
+}
+.ajc-btm-edit-txt{
+    @apply text-sm underline
+}
+.ajc-btm-delete{
+    @apply text-base
+}
+.ajc-feature-star{
+    @apply text-black absolute text-2xl right-4
+}

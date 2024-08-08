@@ -1,3 +1,77 @@
 .user-profile-main-cont{
-    @apply min-h-[70vh] flex flex-col items-center bg-gradient-to-r from-blue-grad1 to-blue-grad2 rounded-3xl py-6  w-[90%] min-w-[300px] text-white
+    @apply relative min-h-[70vh] flex flex-col items-center bg-gradient-to-r from-blue-grad1 to-blue-grad2 rounded-3xl pb-6 pt-16  w-[90%] min-w-[300px] text-white
 }
+.up-text-cont{
+    @apply mb-6 flex flex-col items-center
+}
+.up-edit-btn{
+    @apply absolute top-2 right-4 text-2xl cursor-pointer
+}
+.up-user-img-cont{
+    @apply w-[120px] h-[120px] rounded-full absolute top-[-70px] flex justify-end
+}
+.up-user-img{
+    @apply w-full h-full rounded-full absolute bg-white
+}
+.up-user-rank-text{
+    @apply bg-yellow-400 rounded-full w-[36px] h-[36px] text-sm font-medium mr-[-5px] text-black flex items-center justify-center z-20
+}
+.up-name{
+    @apply text-xl font-medium mb-1
+}
+.up-text-normal{
+    @apply text-base mb-1
+}
+.up-links-cont{
+    @apply w-full flex flex-col items-center
+}
+.up-link-item{
+    @apply cursor-pointer w-[90%] flex items-center justify-start relative h-[55px] mb-4 bg-gradient-to-r from-blue-grad3 to-blue-grad1 border-b-[1px] border-white
+}
+.up-link-item-img{
+    @apply h-[60px] absolute left-0  bottom-[2px] 
+}   
+.up-link-item-img2{
+    @apply h-[120px] absolute left-[-30px] bottom-[-20px]
+}
+.up-link-item-text{
+    @apply text-sm font-medium ml-[36%]
+}
+
+/* update modal  */
+
+.update-profile-modal-cont{
+    @apply flex flex-col h-screen w-screen justify-center items-center
+}
+.upm-main{
+    @apply bg-white flex flex-col items-center relative rounded-2xl w-[90%] py-6 text-black
+}
+.upm-close-icon{
+    @apply absolute right-4 top-3 text-2xl cursor-pointer
+}
+.upm-img-cont{
+    @apply relative w-[130px] h-[130px] mt-2 mb-10 
+}
+.upm-img{
+    @apply rounded-full w-full h-full border-[1px] border-black
+}
+.upm-img-icon{
+    @apply absolute cursor-pointer bottom-0 right-0 z-30 text-4xl bg-white px-[2px] py-[2px] border-[1px] rounded-full border-black
+}
+.upm-form-item{
+    @apply w-[80%] mb-5
+}
+.upm-form-label{
+    @apply w-full text-left mb-2
+}
+.upm-form-inp{
+    @apply outline-none border-b-[1px] border-gray-400 w-full;
+    transition: 1s smooth;
+}
+.upm-form-inp:focus{
+    @apply border-black
+}
+.upm-submit{
+    @apply rounded-xl bg-green-gard3 py-3 px-6 text-white font-semibold mt-8
+}
+

@@ -21,8 +21,14 @@
 .jl-user-btn-icon{
     @apply text-2xl 
 }
+.jl-user-btn-option-cont{
+    @apply bg-white w-full text-black absolute bottom-[-132px] text-sm font-semibold text-center rounded-sm left-[-4px] flex flex-col items-center
+}
+.jl-user-btn-option-cont hr{
+    @apply w-full
+}
 .jl-user-btn-option{
-    @apply  bg-white w-full text-black absolute bottom-[-20px] text-sm font-semibold text-center rounded-sm left-[-4px]
+    @apply w-full py-3
 }
 .jl-user-btn-name{
     @apply text-sm

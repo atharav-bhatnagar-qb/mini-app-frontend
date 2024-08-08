@@ -14,7 +14,7 @@ import { FaCopy } from "react-icons/fa6";
 
 const JobDescription = () => {
     const tonAuth=useContext(TonContext)
-    // console.log(tonAuth)
+    // console.log(tonAuth)`
     const nav=useNavigate()
     const {wallet,sender}=useTonConnect()
     const [links,setLinks]=useState([])
@@ -24,7 +24,7 @@ const JobDescription = () => {
   
     async function getAllreferrals(){
         try{
-            await axios.get(`${baseURL}/getAllLinks?user=${wallet}&job=${tonAuth?.job?.jobId}`).then((res)=>{
+            await axios.get(`${baseURL}/getAllLinks?user=${wallet}&job=${tonAuth?.job?.id}`).then((res)=>{
                 console.log(res?.data?.message)
                 if(res?.data?.message=="links found"){
                     console.log("links : ",res?.data?.links)
@@ -90,7 +90,13 @@ const JobDescription = () => {
     <div className='job-des-main'>
         <img src="coinTop.png" alt="top" className="coin-top" />
         <div className="jd-back-icon-cont">
-            <LuArrowLeft className='jd-back-icon' onClick={()=>nav('/jobListing')}/>
+            <LuArrowLeft className='jd-back-icon' onClick={()=>{
+                if(tonAuth?.user?.isAdmin){
+                    nav('/adminJobListing')
+                    return
+                }
+                nav('/jobListing')}
+            }/>
         </div>
         <div className="jd-main-des-cont">
             <img src={tonAuth?.job?.logo==undefined?"compLogo.png":tonAuth?.job?.logo} alt="company" className="jd-comp-img" />
@@ -137,6 +143,7 @@ const JobDescription = () => {
                 posted 2 months ago
             </p>
         </div>
+        {
         <div className="jd-refer-job-cont">
             <a  className="jd-sec-title">Refer Job</a>
             {
@@ -176,6 +183,7 @@ const JobDescription = () => {
             }
 
         </div>
+        }
         <div className="jd-applicant-req-cont">
             <p className="jd-sec-title">About the Role</p>
             <p className="jd-small-text">
@@ -219,10 +227,10 @@ const JobDescription = () => {
             </p>
         </div>
         <div className="jd-app-cont">
-            <button className="jd-app-refer-btn" onClick={()=>{
+            {/* <button className="jd-app-refer-btn" onClick={()=>{
                 nav('/jobDetails#refer-ref')
                 toast.success("Generate referrals or share the existing ones")
-            }}>Refer Job</button>
+            }}>Refer Job</button> */}
             <button className="jd-app-apply-btn" onClick={()=>nav('/apply')}>Apply</button>
         </div>
     </div>

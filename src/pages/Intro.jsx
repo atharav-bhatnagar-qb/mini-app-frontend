@@ -10,12 +10,12 @@ const instructions=[
     "Connect your Ton wallet",
     "Signup as a user",
     "Select a job to generate referral",
-    "Generate new Referral by depositing 10 Ton stars",
+    "Generate new Referral by depositing 1 Ton ",
     "Share the link to a candidate",
     "Candidate will receive a rating after applying for the job",
     "Your deposit will merge into the pool if candidate gets rating 3 or less",
     "Deposit will be returned by the end of the week on rating greater than 3",
-    "Top 10 users with maximum referred candidates having rating 3 or more will receive 10 extra ton stars by the end of the week"
+    "Top 10 users with maximum referred candidates having rating 3 or more will receive rewards by the end of the week"
 ]
 
 const Intro = () => {

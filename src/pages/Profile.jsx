@@ -29,7 +29,7 @@ const Profile = () => {
     {
       img:"profileSec2.png",
       text:"Bounties Earned",
-      onclick:()=>nav('/')
+      onclick:()=>nav('/refApplications')
     },
     {
       img:"profileSec3.png",

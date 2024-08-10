@@ -23,7 +23,7 @@ const CandidateProfile = () => {
   return (
     <div className='page'>
         <img src="coinTop.png" alt="top" className="coin-top" />
-        <LuArrowLeft className='back-icon' onClick={()=>nav('/jobListing')}/>
+        <LuArrowLeft className='back-icon' onClick={()=>nav(-1)}/>
         <div className="can-pro-cont">
             <h1 className="can-pro-title">Candidate Profile</h1>
             <div className="can-pro-card">

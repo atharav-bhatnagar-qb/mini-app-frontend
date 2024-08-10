@@ -8,6 +8,7 @@ import { GoChevronLeft } from "react-icons/go";
 import axios from 'axios';
 import { useTonConnect } from '../utils/useTonConnect';
 import { FaRegUser } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const Leaderboard = () => {
     const nav=useNavigate()
@@ -30,6 +31,10 @@ const Leaderboard = () => {
         }catch(err){
             console.log(err)
         }
+    }
+
+    const changeRankPage=(direction)=>{
+        toast.error('No more pages to show ')
     }
 
 
@@ -64,9 +69,9 @@ const Leaderboard = () => {
                     </div>
         <div className="lm-cont">
             <div className="lmc-head">
-                <GoChevronLeft className='lmc-head-icon'/>
+                <GoChevronLeft className='lmc-head-icon' onClick={()=>changeRankPage(-1)}/>
                 <p className="lmc-head-title">Top {10} this week</p>
-                <GoChevronRight className='lmc-head-icon'/>
+                <GoChevronRight className='lmc-head-icon' onClick={()=>changeRankPage(1)}/>
             </div>
             {
                 leaderboard?.map((el,ind)=>(

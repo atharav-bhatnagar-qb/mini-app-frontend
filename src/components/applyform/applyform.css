@@ -1,5 +1,5 @@
 .apply-form-cont{
-  @apply min-h-[70vh] flex flex-col items-center bg-gradient-to-r from-blue-grad1 to-blue-grad2 rounded-3xl py-6  w-[90%] min-w-[300px] text-white
+  @apply z-10 min-h-[70vh] flex flex-col items-center bg-gradient-to-r from-blue-grad1 to-blue-grad2 rounded-3xl py-6  w-[90%] min-w-[300px] text-white
 }
 .apply-title{
   @apply text-2xl font-semibold my-5

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../components/createJob/createJob.css'
 import CreateJob1 from '../components/createJob/CreateJob1'
 import CreateJob2 from '../components/createJob/CreateJob2'
 import CreateJob3 from '../components/createJob/CreateJob3'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { baseURL } from '../utils/context'
+import { TonContext, baseURL } from '../utils/context'
 import toast from 'react-hot-toast'
 import ReactModal from 'react-modal'
 import Loader from '../components/reusables/Loader'
@@ -23,9 +23,11 @@ const CreateJob = () => {
     tags:[],
     aboutCompany:"",
     candidateReq:"",
-    jobReq:""
+    jobReq:"",
+    isFeatured:false
   })
   const nav=useNavigate()
+  const tonAuth=useContext(TonContext)
   async function createNewJob(){
     try{
       await axios.post(`${baseURL}/createJobs`,newJob).then((res)=>{
@@ -44,6 +46,13 @@ const CreateJob = () => {
       toast.error("something went wrong")
     }
   }
+
+  useEffect(()=>{
+    if(tonAuth?.user==undefined || !tonAuth?.user?.isAdmin){
+      nav('/')
+    }
+  },[])
+
   return (
     <div className='page'>
       <img src="coinTop.png" alt="coin top" className='coin-top' />

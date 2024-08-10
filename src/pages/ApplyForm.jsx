@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../components/applyform/applyform.css'
 import { LuArrowLeft } from 'react-icons/lu'
 import { PiFileTextLight } from "react-icons/pi";
@@ -6,7 +6,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { baseURL } from '../utils/context';
+import { TonContext, baseURL } from '../utils/context';
 import { useTonConnect } from '../utils/useTonConnect';
 
 const ApplyForm = () => {
@@ -14,6 +14,13 @@ const ApplyForm = () => {
   const [skills,setSkills]=useState([""])
   const nav=useNavigate()
   const {wallet}=useTonConnect()
+  const tonAuth=useContext(TonContext)
+
+  useEffect(()=>{
+    if(tonAuth?.user==undefined){
+        nav('/')
+    }
+  },[])
 
   async function apply(){
     try{

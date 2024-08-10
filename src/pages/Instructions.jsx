@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../components/instructions/instructions.css'
 import { LuArrowLeft } from 'react-icons/lu'
 import { useNavigate } from 'react-router-dom'
+import { TonContext } from '../utils/context'
 
 const instructions=[
     "Connect your Ton wallet",
@@ -17,6 +18,14 @@ const instructions=[
 
 const Instructions = () => {
     const nav=useNavigate()
+    const tonAuth=useContext(TonContext)
+
+    useEffect(()=>{
+        if(tonAuth?.user==undefined){
+            nav('/')
+        }
+    },[])
+
   return (
     <div className='page'>
         <img src="coinTop.png" alt="coin top" className="coin-top" />

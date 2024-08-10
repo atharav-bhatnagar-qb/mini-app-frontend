@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { TonContext, baseURL } from '../utils/context'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
@@ -17,6 +17,12 @@ const EditJob = () => {
     const [loading,setLoading]=useState(false)
     const [screen,setScreen]=useState(1)
     const nav=useNavigate()
+
+    useEffect(()=>{
+      if(tonAuth?.user==undefined || !tonAuth?.user?.isAdmin){
+          nav('/')
+      }
+    },[])
 
     async function editJob(){
         try{

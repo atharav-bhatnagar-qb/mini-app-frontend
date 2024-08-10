@@ -6,6 +6,7 @@ import CreatePageIndicator from '../createJob/CreatePageIndicator'
 import { LuArrowLeft } from 'react-icons/lu'
 import { RiImageAddLine } from 'react-icons/ri'
 import {imageDB} from '../../../firebaseConfig'
+import { IoStarOutline, IoStarSharp } from 'react-icons/io5'
 
 const EditJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
 
@@ -114,6 +115,18 @@ const EditJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
                 />
 
             }
+
+            <div className="cj1-feature-cont">
+                {
+                    newJob?.isFeatured?
+                    <IoStarSharp className='cj1-feature-icon' onClick={()=>setNewJob({...newJob,isFeatured:false})}/>
+                    :
+                    <IoStarOutline className='cj1-feature-icon' onClick={()=>setNewJob({...newJob,isFeatured:true})}/>
+                }
+                <p className="cj1-feature-text">
+                    {newJob?.isFeatured?"Featured":"Unfeatured"}
+                </p>
+           </div>
            
             <div className="cj1-inp-item">
                 <p className="cj1-inp-label">

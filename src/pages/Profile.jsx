@@ -24,7 +24,7 @@ const Profile = () => {
     {
       img:"profileSec1.png",
       text:"Rank Board",
-      onclick:()=>nav('/')
+      onclick:()=>nav('/leaderboard')
     },
     {
       img:"profileSec2.png",
@@ -66,6 +66,11 @@ const Profile = () => {
     }
 }
   useEffect(()=>{
+    
+    if(tonAuth?.user==undefined){
+        nav('/')
+    }
+    
     getUserDetails()
   },[])
 

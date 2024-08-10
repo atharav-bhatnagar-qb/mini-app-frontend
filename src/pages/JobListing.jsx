@@ -97,6 +97,11 @@ const JobListing = () => {
         }
     }
     useEffect(()=>{
+
+        if(tonAuth?.user==undefined){
+            nav('/')
+        }
+
         getFeaturedJobs()
         getUnFeaturedJobs()
     },[])

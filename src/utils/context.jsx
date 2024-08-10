@@ -13,7 +13,7 @@ export const useTon=()=>{
     const [walletId,setWalletId]=useState(null)
     const [job,setJob]=useState(null)
     const [candidate,setCandidate]=useState(null)
-    const [user,setUser]=useState({})
+    const [user,setUser]=useState(undefined)
 
     useEffect(()=>{
         console.log("from context : ",job)

@@ -27,6 +27,8 @@ const CandidateApplications = () => {
     const tonAuth=useContext(TonContext)
     const [applications,setApplications]=useState([])
 
+    
+
     async function getApplications(){
         try{
             setApplications([])
@@ -60,6 +62,9 @@ const CandidateApplications = () => {
     }
 
     useEffect(()=>{
+        if(tonAuth?.user==undefined){
+            nav('/')
+        }
         getApplications()
     },[])
 

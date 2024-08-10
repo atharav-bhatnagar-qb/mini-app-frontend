@@ -34,6 +34,11 @@ const ReferralList = () => {
     }
 
     useEffect(()=>{
+
+        if(tonAuth?.user==undefined){
+            nav('/')
+        }
+          
         getLinks()
         console.log(wallet)
     },[])

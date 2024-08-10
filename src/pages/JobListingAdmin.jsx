@@ -98,6 +98,9 @@ const JobListingAdmin = () => {
     }
 
     useEffect(()=>{
+        if(tonAuth?.user==undefined || !tonAuth?.user?.isAdmin){
+            nav('/')
+        }
         getFeaturedJobs()
         getUnFeaturedJobs()
     },[])

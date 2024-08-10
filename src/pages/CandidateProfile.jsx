@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../components/candidateProfile/candidateProfile.css'
 import { LuArrowLeft } from 'react-icons/lu'
 import { TiStarOutline } from 'react-icons/ti'
@@ -13,6 +13,13 @@ const CandidateProfile = () => {
     const tonAuth=useContext(TonContext)
     const nav=useNavigate()
     console.log(tonAuth?.candidate)
+
+    useEffect(()=>{
+        if(tonAuth?.user==undefined){
+            nav('/')
+        }
+    },[])
+
   return (
     <div className='page'>
         <img src="coinTop.png" alt="top" className="coin-top" />

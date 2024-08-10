@@ -28,6 +28,11 @@ const ReferralApplications = () => {
     }
 
     useEffect(()=>{
+
+        if(tonAuth?.user==undefined){
+            nav('/')
+        }
+          
         getCandidates()
     },[])
 

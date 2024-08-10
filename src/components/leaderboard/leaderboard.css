@@ -1,0 +1,46 @@
+.leaderboard-page{
+    @apply relative w-screen min-h-screen bg-blue-bg  flex flex-col items-center justify-start py-[80px];
+}
+.lm-admin-btn{
+    @apply mt-2 z-10 text-white relative cursor-pointer min-w-[100px] flex justify-start items-center px-1 py-1 border-white rounded-lg border-[0.5px]
+}
+.lma-icon{
+    @apply ml-3 mr-2
+}
+.lma-name{
+    @apply text-sm
+}
+.leaderboard-main-header{
+    @apply flex justify-between w-[96%] items-start z-[10]
+}
+.lm-back-icon{
+    @apply text-5xl text-white mb-[60px]
+}
+.lm-cont{
+    /* dvw can be used  */
+    @apply bg-blue-grad1 w-screen min-h-40 z-10 flex flex-col items-center py-6 text-white 
+}
+.lmc-head{
+    @apply w-[85%] flex items-center justify-between
+}
+.lmc-head-icon{
+    @apply text-2xl bg-gray-skill p-1 text-white mt-3 mb-7 
+}
+.lmc-head-title{
+    @apply font-semibold
+}
+.lmc-item{
+    @apply w-[85%] flex justify-between items-center py-1.5
+}
+.lmc-text{
+    @apply text-sm
+}
+.lmc-text2{
+    @apply text-sm font-extralight
+}
+.lmc-line{
+    @apply h-[2px] bg-gray-skill  w-[85%] mb-2
+}
+.leaderboard-btm-text{
+    @apply text-white font-semibold my-10
+}

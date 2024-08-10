@@ -50,6 +50,16 @@
 .cj1-comp-logo{
     @apply w-[100px] h-[100px] object-cover rounded-full border-[1px] border-white
 }
+.cj1-feature-cont{
+    @apply w-[90%] my-5 flex justify-start items-center
+}
+.cj1-feature-text{
+    @apply text-base
+}
+.cj1-feature-icon{
+    @apply mr-2 text-2xl
+}
+
 /* 2  */
 
 .cj2-form-cont{

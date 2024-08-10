@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../components/register/register.css'
 import toast from 'react-hot-toast'
 import { TonContext, baseURL, useTon } from '../utils/context'
@@ -46,6 +46,13 @@ const Register = () => {
             toast.error("some error occured")
         }
     }
+
+    useEffect(()=>{
+        console.log(tonAuth?.user)
+        if(tonAuth?.user==undefined){
+            nav('/')
+        }
+    },[])
 
   return (
     <div className='page'>

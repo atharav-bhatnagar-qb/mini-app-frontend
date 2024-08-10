@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../components/adminHome/adminHome.css'
 import { useNavigate } from 'react-router-dom'
 import { TonContext, useTon } from '../utils/context'
@@ -37,7 +37,11 @@ const AdminHome = () => {
     console.log("tonauth",tonAuth?.user)
     const [tonConnectUI]=useTonConnectUI()
 
-
+    useEffect(()=>{
+        if(tonAuth?.user==undefined || !tonAuth?.user?.isAdmin){
+            nav('/')
+        }
+    },[])
   return (
     <div className='page'>
         <img src='coinTop.png' alt='top' className='coin-top'/>
@@ -69,7 +73,7 @@ const AdminHome = () => {
                 <h3 className="ah-table-title">
                     TOP 3 This week
                 </h3>
-                <p className="ah-table-link">
+                <p className="ah-table-link" onClick={()=>nav('/leaderboard')}>
                     View Details
                 </p>
             </div>

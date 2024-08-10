@@ -83,6 +83,11 @@ const JobDescription = () => {
     }
 
     useEffect(()=>{
+        
+        if(tonAuth?.user==undefined){
+            nav('/')
+        }
+          
         getAllreferrals()
     },[])
 

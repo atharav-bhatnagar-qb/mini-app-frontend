@@ -6,6 +6,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { imageDB } from '../../../firebaseConfig';
 import toast from 'react-hot-toast';
 import { v4 } from 'uuid';
+import { IoStarOutline } from "react-icons/io5";
+import { IoStarSharp } from "react-icons/io5";
 
 const CreateJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
     const [img,setImg]=useState(newJob.logo)
@@ -113,7 +115,17 @@ const CreateJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
                 />
 
             }
-           
+           <div className="cj1-feature-cont">
+                {
+                    newJob?.isFeatured?
+                    <IoStarSharp className='cj1-feature-icon' onClick={()=>setNewJob({...newJob,isFeatured:false})}/>
+                    :
+                    <IoStarOutline className='cj1-feature-icon' onClick={()=>setNewJob({...newJob,isFeatured:true})}/>
+                }
+                <p className="cj1-feature-text">
+                    {newJob?.isFeatured?"Featured":"Unfeatured"}
+                </p>
+           </div>
             <div className="cj1-inp-item">
                 <p className="cj1-inp-label">
                 Job Title

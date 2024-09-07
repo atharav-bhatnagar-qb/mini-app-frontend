@@ -91,7 +91,7 @@ const Intro = () => {
             //     document.getElementById('TonConnectButton').click()
             // }}
             onClick={async()=>{
-                connected==true?
+                connected==false?
                 open()
                 :
                 await tonConnectUI.disconnect()

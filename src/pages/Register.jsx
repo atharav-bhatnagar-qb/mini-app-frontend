@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 const Register = () => {
 
     const tonAuth=useContext(TonContext)
-    const {wallet}=useTonConnect()
+    const {wallet,connected}=useTonConnect()
     const nav=useNavigate()
 
     async function register(){
@@ -57,7 +57,7 @@ const Register = () => {
 
     useEffect(()=>{
         console.log(tonAuth?.user)
-        if(tonAuth?.user==undefined){
+        if(!connected){
             nav('/')
         }
     },[])

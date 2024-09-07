@@ -22,3 +22,7 @@
 .rai-non-link{
     @apply text-white font-medium underline absolute bottom-4 my-4 cursor-pointer
 }
+.rai-bounty-count{
+    @apply text-white text-sm font-medium mb-4 cursor-pointer underline
+
+}

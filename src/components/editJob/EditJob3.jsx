@@ -5,7 +5,7 @@ import CreatePageIndicator from '../createJob/CreatePageIndicator'
 
 const EditJob3 = ({setScreen,setNewJob,newJob,editJob,nav}) => {
     const nextScreen=()=>{
-        if(newJob.candidateReq==""||newJob.jobReq==""){
+        if(newJob.candidateReq==""||newJob.jobReq==""||newJob.candidateReq.trim()||newJob.jobReq.trim()){
             toast.error("Please do not leave any field empty")
             return
         }

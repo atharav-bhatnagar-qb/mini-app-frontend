@@ -19,7 +19,7 @@ const EditJob2 = ({setScreen,setNewJob,newJob,nav}) => {
         toast.error("Please attach atleast one tag")
         return
       }
-      if(newJob.aboutCompany==""){
+      if(newJob.aboutCompany==""|| newJob.aboutCompany.trim()==""){
         console.log(newJob.tags.length==0,newJob.skills)
         toast.error("Describe something about the company as well")
         return

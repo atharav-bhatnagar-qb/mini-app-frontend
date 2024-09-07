@@ -1,11 +1,5 @@
-;; Comment "Contribute"
-cell __gen_cell_comment_a3677a10b380dd94931e32fde88aaf77059d02a6762344ce67b22a668aa7a199() asm "B{b5ee9c7241010101001000001c00000000436f6e747269627574651ef375e9} B>boc PUSHREF";
+;; String "dump(i)"
+slice __gen_slice_string_397fc7310b86c7db53ed2eb3d34bf112cebc8e1a0593ae1c47a7a44cf8f8e70f() asm "B{b5ee9c7241010101000900000e64756d70286929bed606f1} B>boc <s PUSHSLICE";
 
-;; Comment "Reward"
-cell __gen_cell_comment_f3a89b1e1fcd95302485a334adff0358a844d4f035b971c74cfdaa37ac5c140b() asm "B{b5ee9c7241010101000c000014000000005265776172640698bda6} B>boc PUSHREF";
-
-;; Comment "Return"
-cell __gen_cell_comment_6ef41a1603279cbd03396d3a3593d3f465c968554125a8b39067ebfc8b060d65() asm "B{b5ee9c7241010101000c0000140000000052657475726e97e00141} B>boc PUSHREF";
-
-;; Comment "Not a valid rating!"
-cell __gen_cell_comment_c5494b4f7852af6bfb615d172e5e847b5de3544b8ae2c38143e06f7c6805bf0d() asm "B{b5ee9c7241010101001900002e000000004e6f7420612076616c696420726174696e6721f9418849} B>boc PUSHREF";
+;; String "dump(err)"
+slice __gen_slice_string_7a3cd242d362c5e9bc2768f2913ab5c68a797aa94aea2f2c9ac48310c49f2495() asm "B{b5ee9c7241010101000b00001264756d702865727229b3222eea} B>boc <s PUSHSLICE";

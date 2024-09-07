@@ -1,9 +1,9 @@
 # TACT Compilation Report
 Contract: Pot
-BOC Size: 1830 bytes
+BOC Size: 1108 bytes
 
 # Types
-Total Types: 11
+Total Types: 10
 
 ## StateInit
 TLB: `_ code:^cell data:^cell = StateInit`
@@ -29,38 +29,26 @@ Signature: `DeployOk{queryId:uint64}`
 TLB: `factory_deploy#6d0ff13b queryId:uint64 cashback:address = FactoryDeploy`
 Signature: `FactoryDeploy{queryId:uint64,cashback:address}`
 
-## Affiliate
-TLB: `affiliate#fd6aff48 affiliate:address = Affiliate`
-Signature: `Affiliate{affiliate:address}`
+## ReturnFee
+TLB: `return_fee#ee23380a wallet:address amount:int257 = ReturnFee`
+Signature: `ReturnFee{wallet:address,amount:int257}`
 
-## Ref
-TLB: `_ ownerContract:address generatedBy:address jobId:^string link:^string = Ref`
-Signature: `Ref{ownerContract:address,generatedBy:address,jobId:^string,link:^string}`
+## DistributeReward
+TLB: `distribute_reward#1b7b2804 wallets:dict<int, address> userCount:int257 rewardsStars:dict<int, int> = DistributeReward`
+Signature: `DistributeReward{wallets:dict<int, address>,userCount:int257,rewardsStars:dict<int, int>}`
 
-## WithdrawAmount
-TLB: `withdraw_amount#5d64d821 amount:coins = WithdrawAmount`
-Signature: `WithdrawAmount{amount:coins}`
+## RequestAll
+TLB: `request_all#d3f5a10d preserve:int257 = RequestAll`
+Signature: `RequestAll{preserve:int257}`
 
-## GenerateReferral
-TLB: `generate_referral#dc6ef34f jobId:^string link:^string generatedBy:address = GenerateReferral`
-Signature: `GenerateReferral{jobId:^string,link:^string,generatedBy:address}`
-
-## CandidateRegistered
-TLB: `candidate_registered#3cc67486 rating:uint8 jobId:^string link:^string = CandidateRegistered`
-Signature: `CandidateRegistered{rating:uint8,jobId:^string,link:^string}`
+## Pot$Data
+TLB: `null`
+Signature: `null`
 
 # Get Methods
-Total Get Methods: 4
+Total Get Methods: 1
 
 ## balance
-
-## address
-
-## owner
-
-## linkAddress
-Argument: jobId
-Argument: link
 
 # Error Codes
 2: Stack underflow
@@ -87,5 +75,20 @@ Argument: link
 135: Code of a contract was not found
 136: Invalid address
 137: Masterchain support is not enabled for this contract
-23888: Only pot is authorized for this action !
-59719: This action is reserved for the owner !
+
+# Trait Inheritance Diagram
+
+```mermaid
+graph TD
+Pot
+Pot --> BaseTrait
+Pot --> Deployable
+Deployable --> BaseTrait
+```
+
+# Contract Dependency Diagram
+
+```mermaid
+graph TD
+Pot
+```

@@ -11,101 +11,73 @@
 ;; Contract Pot functions
 ;;
 
-(slice) $Pot$_contract_init() impure inline_ref {
-    var (($self'owner)) = (null());
-    $self'owner = __tact_context_get_sender();
-    return ($self'owner);
+(int) $Pot$_contract_init(int $id) impure inline_ref {
+    var (($self'id)) = (null());
+    $self'id = $id;
+    return ($self'id);
 }
 
-((slice), ()) $Pot$_fun_ownerOnly((slice) $self) impure inline_ref {
-    var (($self'owner)) = $self;
-    throw_unless(59719, ( __tact_slice_eq_bits($self'owner, __tact_context_get_sender()) ));
-    return (($self'owner), ());
+((int), ()) $Pot$_fun_requireOwner((int) $self) impure inline_ref {
+    var (($self'id)) = $self;
+    return (($self'id), ());
 }
 
-((slice), slice) $Pot$_fun_balance((slice) $self) impure inline_ref {
-    var (($self'owner)) = $self;
-    return (($self'owner), $Int$_fun_toCoinsString(__tact_my_balance()));
-}
-
-((slice), slice) $Pot$_fun_address((slice) $self) impure inline_ref {
-    var (($self'owner)) = $self;
-    return (($self'owner), my_address());
-}
-
-((slice), slice) $Pot$_fun_owner((slice) $self) impure inline_ref {
-    var (($self'owner)) = $self;
-    return (($self'owner), $self'owner);
-}
-
-((slice), (cell, cell)) $Pot$_fun_getRefInit((slice) $self, slice $jobId, slice $link) impure inline_ref {
-    var (($self'owner)) = $self;
-    var ($init'code, $init'data) = $Referral$_init_child(__tact_context_sys, $jobId, $link);
-    return (($self'owner), ($init'code, $init'data));
-}
-
-((slice), slice) $Pot$_fun_linkAddress((slice) $self, slice $jobId, slice $link) impure inline_ref {
-    var (($self'owner)) = $self;
-    var ($refInit'code, $refInit'data) = ($self'owner)~$Pot$_fun_getRefInit($jobId, $link);
-    return (($self'owner), $global_contractAddress(($refInit'code, $refInit'data)));
+((int), int) $Pot$_fun_balance((int) $self) impure inline_ref {
+    var (($self'id)) = $self;
+    return (($self'id), (__tact_my_balance() - 500000000));
 }
 
 ;;
 ;; Receivers of a Contract Pot
 ;;
 
-(((slice)), ()) %$Pot$_internal_empty((slice) $self) impure inline {
-    var ($self'owner) = $self;
-    return (($self'owner), ());
+(((int)), ()) %$Pot$_internal_empty((int) $self) impure inline {
+    var ($self'id) = $self;
+    return (($self'id), ());
 }
 
-((slice), ()) $Pot$_internal_text_63365f83ad1d185f336d0e64cfce19190f3623d6d976c30c6198ac209c8946ee((slice) $self) impure inline {
-    var ($self'owner) = $self;
-    ($self'owner)~$Pot$_fun_ownerOnly();
-    $global_send($SendParameters$_constructor_to_value_mode_bounce(__tact_context_get_sender(), ((__tact_my_balance() - $Context$_get_value(__tact_context_get())) - 10000000), (2 + 64), true));
-    return (($self'owner), ());
+(((int)), ()) $Pot$_internal_binary_ReturnFee((int) $self, (slice, int) $req) impure inline {
+    var ($self'id) = $self;
+    var ($req'wallet, $req'amount) = $req;
+    int $amount = min($req'amount, (__tact_my_balance() - 500000000));
+    $global_send($SendParameters$_constructor_to_value_mode_bounce($req'wallet, $amount, 66, true));
+    return (($self'id), ());
 }
 
-(((slice)), ()) $Pot$_internal_binary_WithdrawAmount((slice) $self, (int) $msg) impure inline {
-    var ($self'owner) = $self;
-    var ($msg'amount) = $msg;
-    ($self'owner)~$Pot$_fun_ownerOnly();
-    int $amount = min($msg'amount, ((__tact_my_balance() - $Context$_get_value(__tact_context_get())) - 10000000));
-    $global_send($SendParameters$_constructor_to_value_mode_bounce(__tact_context_get_sender(), $amount, (2 + 64), true));
-    return (($self'owner), ());
-}
-
-(((slice)), ()) $Pot$_internal_binary_GenerateReferral((slice) $self, (slice, slice, slice) $msg) impure inline {
-    var ($self'owner) = $self;
-    var ($msg'jobId, $msg'link, $msg'generatedBy) = $msg;
-    if (($Context$_get_value(__tact_context_get()) >= 1050000000)) {
-        var ($refInit'code, $refInit'data) = ($self'owner)~$Pot$_fun_getRefInit($msg'jobId, $msg'link);
-        $global_send($SendParameters$_constructor_to_value_mode_bounce_code_data_body($global_contractAddress(($refInit'code, $refInit'data)), 0, (2 + 64), true, $refInit'code, $refInit'data, $Affiliate$_store_cell($Affiliate$_constructor_affiliate($msg'generatedBy))));
+(((int)), ()) $Pot$_internal_binary_DistributeReward((int) $self, (cell, int, cell) $req) impure inline {
+    var ($self'id) = $self;
+    var ($req'wallets, $req'userCount, $req'rewardsStars) = $req;
+    try {
+        int $i = 0;
+        while (($i < $req'userCount)) {
+            $global_send($SendParameters$_constructor_to_value_mode_bounce(__tact_not_null(__tact_dict_get_int_slice($req'wallets, 257, $i)), __tact_not_null(__tact_dict_get_int_int($req'rewardsStars, 257, $i, 257)), 2, true));
+            $i = ($i + 1);
+            __tact_debug_str(__tact_int_to_string($i), __gen_slice_string_397fc7310b86c7db53ed2eb3d34bf112cebc8e1a0593ae1c47a7a44cf8f8e70f(), "File contracts/pot.tact:60:17:");
+        }
+    } catch (_, $err) {
+        __tact_debug_str(__tact_int_to_string($err), __gen_slice_string_7a3cd242d362c5e9bc2768f2913ab5c68a797aa94aea2f2c9ac48310c49f2495(), "File contracts/pot.tact:63:13:");
     }
-    return (($self'owner), ());
+    return (($self'id), ());
 }
 
-(((slice)), ()) $Pot$_internal_binary_CandidateRegistered((slice) $self, (int, slice, slice) $msg) impure inline {
-    var ($self'owner) = $self;
-    var ($msg'rating, $msg'jobId, $msg'link) = $msg;
-    var ($refInit'code, $refInit'data) = ($self'owner)~$Pot$_fun_getRefInit($msg'jobId, $msg'link);
-    if (($msg'rating < 3)) {
-        $global_send($SendParameters$_constructor_to_value_mode_bounce_body($global_contractAddress(($refInit'code, $refInit'data)), 0, (2 + 64), true, __gen_cell_comment_a3677a10b380dd94931e32fde88aaf77059d02a6762344ce67b22a668aa7a199()));
-    } elseif (( (($msg'rating > 3)) ? (($msg'rating <= 5)) : (false) )) {
-        $global_send($SendParameters$_constructor_to_value_mode_bounce_body($global_contractAddress(($refInit'code, $refInit'data)), 1000000000, (2 + 64), true, __gen_cell_comment_f3a89b1e1fcd95302485a334adff0358a844d4f035b971c74cfdaa37ac5c140b()));
-    } elseif (($msg'rating == 3)) {
-        $global_send($SendParameters$_constructor_to_value_mode_bounce_body($global_contractAddress(($refInit'code, $refInit'data)), 0, (2 + 64), true, __gen_cell_comment_6ef41a1603279cbd03396d3a3593d3f465c968554125a8b39067ebfc8b060d65()));
-    } else {
-        ($self'owner)~$Pot$_fun_reply(__gen_cell_comment_c5494b4f7852af6bfb615d172e5e847b5de3544b8ae2c38143e06f7c6805bf0d());
+(((int)), ()) $Pot$_internal_binary_RequestAll((int) $self, (int) $req) impure inline {
+    var ($self'id) = $self;
+    var ($req'preserve) = $req;
+    try {
+        ($self'id)~$Pot$_fun_requireOwner();
+        int $amount = ((__tact_my_balance() - 500000000) - $req'preserve);
+        $global_send($SendParameters$_constructor_to_value_mode_bounce(__tact_context_get_sender(), $amount, 66, true));
+    } catch (_, $err) {
+        __tact_debug_str(__tact_int_to_string($err), __gen_slice_string_7a3cd242d362c5e9bc2768f2913ab5c68a797aa94aea2f2c9ac48310c49f2495(), "File contracts/pot.tact:79:13:");
     }
-    return (($self'owner), ());
+    return (($self'id), ());
 }
 
-(((slice)), ()) $Pot$_internal_binary_Deploy((slice) $self, (int) $deploy) impure inline {
-    var ($self'owner) = $self;
+(((int)), ()) $Pot$_internal_binary_Deploy((int) $self, (int) $deploy) impure inline {
+    var ($self'id) = $self;
     var ($deploy'queryId) = $deploy;
-    ($self'owner)~$Pot$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
-    return (($self'owner), ());
+    ($self'id)~$Pot$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
+    return (($self'id), ());
 }
 
 ;;
@@ -118,40 +90,6 @@ _ %balance() method_id(104128) {
     return res;
 }
 
-_ %address() method_id(69216) {
-    var self = $Pot$_contract_load();
-    var res = self~$Pot$_fun_address();
-    return res;
-}
-
-_ %owner() method_id(83229) {
-    var self = $Pot$_contract_load();
-    var res = self~$Pot$_fun_owner();
-    return res;
-}
-
-_ %linkAddress(slice $$jobId, slice $$link) method_id(115628) {
-    slice $jobId = $$jobId;
-    slice $link = $$link;
-    var self = $Pot$_contract_load();
-    var res = self~$Pot$_fun_linkAddress($jobId, $link);
-    return res;
-}
-
-_ supported_interfaces() method_id {
-    return (
-        "org.ton.introspection.v0"H >> 128,
-        "org.ton.abi.ipfs.v0"H >> 128,
-        "org.ton.deploy.lazy.v0"H >> 128,
-        "org.ton.debug.v0"H >> 128,
-        "org.ton.chain.workchain.v0"H >> 128
-    );
-}
-
-_ get_abi_ipfs() method_id {
-    return "ipfs://QmZ8g2CpdCgpfrReezdRDwtj3fPmeWvwE7zi9PAcmCRuU4";
-}
-
 _ lazy_deployment_completed() method_id {
     return get_data().begin_parse().load_int(1);
 }
@@ -160,7 +98,7 @@ _ lazy_deployment_completed() method_id {
 ;; Routing of a Contract Pot
 ;;
 
-((slice), int) $Pot$_contract_router_internal((slice) self, int msg_bounced, slice in_msg) impure inline_ref {
+((int), int) $Pot$_contract_router_internal((int) self, int msg_bounced, slice in_msg) impure inline_ref {
     ;; Handle bounced messages
     if (msg_bounced) {
         return (self, true);
@@ -179,24 +117,24 @@ _ lazy_deployment_completed() method_id {
         return (self, true);
     }
     
-    ;; Receive WithdrawAmount message
-    if (op == 1566890017) {
-        var msg = in_msg~$WithdrawAmount$_load();
-        self~$Pot$_internal_binary_WithdrawAmount(msg);
+    ;; Receive ReturnFee message
+    if (op == 3995285514) {
+        var msg = in_msg~$ReturnFee$_load();
+        self~$Pot$_internal_binary_ReturnFee(msg);
         return (self, true);
     }
     
-    ;; Receive GenerateReferral message
-    if (op == 3698258767) {
-        var msg = in_msg~$GenerateReferral$_load();
-        self~$Pot$_internal_binary_GenerateReferral(msg);
+    ;; Receive DistributeReward message
+    if (op == 461056004) {
+        var msg = in_msg~$DistributeReward$_load();
+        self~$Pot$_internal_binary_DistributeReward(msg);
         return (self, true);
     }
     
-    ;; Receive CandidateRegistered message
-    if (op == 1019638918) {
-        var msg = in_msg~$CandidateRegistered$_load();
-        self~$Pot$_internal_binary_CandidateRegistered(msg);
+    ;; Receive RequestAll message
+    if (op == 3556090125) {
+        var msg = in_msg~$RequestAll$_load();
+        self~$Pot$_internal_binary_RequestAll(msg);
         return (self, true);
     }
     
@@ -205,17 +143,6 @@ _ lazy_deployment_completed() method_id {
         var msg = in_msg~$Deploy$_load();
         self~$Pot$_internal_binary_Deploy(msg);
         return (self, true);
-    }
-    
-    ;; Text Receivers
-    if (op == 0) {
-        var text_op = slice_hash(in_msg);
-        
-        ;; Receive "withdrawAll" message
-        if (text_op == 0x63365f83ad1d185f336d0e64cfce19190f3623d6d976c30c6198ac209c8946ee) {
-            self~$Pot$_internal_text_63365f83ad1d185f336d0e64cfce19190f3623d6d976c30c6198ac209c8946ee();
-            return (self, true);
-        }
     }
     
     return (self, false);

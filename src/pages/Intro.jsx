@@ -93,7 +93,7 @@ const Intro = () => {
             onClick={open}
             >
                 {
-                    connected?
+                    connected==true?
                     "DISCONNECT WALLET"
                     :
                     "CONNECT WALLET"

@@ -1,8 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../components/adminHome/adminHome.css'
 import { useNavigate } from 'react-router-dom'
 import { TonContext, useTon } from '../utils/context'
 import { useTonConnectUI } from '@tonconnect/ui-react'
+import { useBondexContract } from '../utils/useBondexContract'
+import { fromNano } from 'ton-core'
+import toast from 'react-hot-toast'
 
 const top=[
     {
@@ -34,14 +37,30 @@ const AdminHome = () => {
 
     const nav=useNavigate()
     const tonAuth=useContext(TonContext)
-    console.log("tonauth",tonAuth?.user)
+    // console.log("tonauth",tonAuth?.user)
+    const [potBalance,setPotBalance]=useState(0)
     const [tonConnectUI]=useTonConnectUI()
+    const {balance,contract,withdrawAll}=useBondexContract()
+
+    async function getPotBalance(){
+        try{
+            let res=await contract.getBalance()
+            console.log("balance : ",res)
+            setPotBalance(parseFloat(fromNano(res)).toFixed(2))
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     useEffect(()=>{
+        // getPotBalance()
         if(tonAuth?.user==undefined || !tonAuth?.user?.isAdmin){
             nav('/')
         }
     },[])
+    useEffect(()=>{
+        getPotBalance()
+    },[balance])
   return (
     <div className='page'>
         <img src='coinTop.png' alt='top' className='coin-top'/>
@@ -61,10 +80,13 @@ const AdminHome = () => {
             <img src="coin1.png" alt="dollar" className="ah-bounty-img" />
             <div className="ah-bc-text-cont">
                 <h3 className="ah-bc-title">
-                    500 Bounty in pool
+                    {potBalance} TON in pool
                 </h3>
-                <p className="ah-bc-link">
-                    View details
+                <p className="ah-bc-link" onClick={()=>{
+                    toast.success("Balance might take a few seconds getting updated after transaction")
+                    withdrawAll()
+                }}>
+                    Withdraw
                 </p>
             </div>
         </div>

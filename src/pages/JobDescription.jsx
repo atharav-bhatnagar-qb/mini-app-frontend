@@ -11,6 +11,7 @@ import { useTonConnect } from '../utils/useTonConnect';
 import { v4 } from 'uuid';
 import toast from 'react-hot-toast';
 import { FaCopy } from "react-icons/fa6";
+import { useBondexContract } from '../utils/useBondexContract';
 
 const JobDescription = () => {
     const tonAuth=useContext(TonContext)
@@ -21,6 +22,7 @@ const JobDescription = () => {
     const newLink=`https://t.me/ton_demo_tel_bot?start=`
     const TON_DECIMALS=9
     const receiver="0QCueun5yIwfsyNDXMe2UQR25WJK5MOYDbkc-elqXeVoU2Ka"
+    const {generateRef}=useBondexContract()
   
     async function getAllreferrals(){
         try{
@@ -41,12 +43,8 @@ const JobDescription = () => {
     async function generateLink(){
         try{
             let id=v4()
-            await sender.send({
-                to:sender.address,
-                value:Math.pow(10,9-2),
-                // body:"Generating referral"
-            }).then(async(res)=>{
-                console.log("ton res : ",res)
+            await generateRef()
+                // console.log("ton res : ",res)
                 await axios.post(`${baseURL}/createLink`,{
                   generatedBy:wallet,
                   link:newLink+id,
@@ -63,10 +61,7 @@ const JobDescription = () => {
                 }).catch((err)=>{
                   console.log(err)
                 })
-              }).catch((err)=>{
-                console.log(err) 
-                toast.error("Could not complete ton transaction!")
-              })
+
         }catch(err){
             console.log(err)
         }

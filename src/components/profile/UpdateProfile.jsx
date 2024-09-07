@@ -64,6 +64,10 @@ const UpdateProfile = ({showUpdateModal,setLoading,getUserDetails}) => {
         setLoading(false)
         return
       }
+      if(user?.name==""||user?.name.trim()==""){
+        toast.error("Please do not leave fields empty")
+        return
+      }
       if(!isEmailAddress(user?.email)||user?.email==''){
         toast.error('Not a valid email')
         setLoading(false)

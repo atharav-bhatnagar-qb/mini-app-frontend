@@ -18,6 +18,10 @@ const CreateJob1 = ({setScreen,setNewJob,newJob,nav,setLoading}) => {
                 toast.error("Please do not leave any fields empty!")
                 return
             }
+            if(newJob.company.trim()==""||newJob.title.trim()==""||newJob.bounty.trim()==""||newJob.jobDetail.trim()==""){
+                toast.error("Please do not add empty feilds")
+                return
+            }
             setLoading(true)
             if(img==""){
                 toast.error("Please choose a company image!")

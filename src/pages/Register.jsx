@@ -18,6 +18,14 @@ const Register = () => {
             const email=document.querySelector('#reg-email').value
 
             console.log(name,email,wallet)
+            if(name=="" || email==""){
+                toast.error("Please do not leave any field empty")
+                return
+            }
+            if(name.trim()==""||email.trim()==""){
+                toast.error("Cannot submit blank spaces")
+                return
+            }
 
             const newUserObj={
                 name:name,

@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 const CreateJob3 = ({setScreen,setNewJob,newJob,createNewJob,nav}) => {
 
     const nextScreen=()=>{
-        if(newJob.candidateReq==""||newJob.jobReq==""){
+        if(newJob.candidateReq==""||newJob.jobReq==""||newJob.candidateReq.trim()||newJob.jobReq.trim()){
             toast.error("Please do not leave any field empty")
             return
         }

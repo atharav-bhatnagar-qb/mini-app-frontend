@@ -9,6 +9,8 @@ import axios from 'axios';
 import { useTonConnect } from '../utils/useTonConnect';
 import { FaRegUser } from 'react-icons/fa';
 import toast from 'react-hot-toast';
+import { Address, Dictionary, fromNano, toNano } from 'ton-core';
+import { useBondexContract } from '../utils/useBondexContract';
 
 const Leaderboard = () => {
     const nav=useNavigate()
@@ -16,6 +18,62 @@ const Leaderboard = () => {
     const [leaderboard,setLeaderboard]=useState([])
     const [selfRank,setSelfRank]=useState({})
     const {wallet}=useTonConnect()
+    const {balance,distributeReward,contract}=useBondexContract()
+    const [potBalance,setPotBalance]=useState(0)
+
+    async function getPotBalance(){
+        try{
+            let res=await contract.getBalance()
+            console.log("balance : ",res)
+            setPotBalance(parseFloat(fromNano(res)).toFixed(2))
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    async function distributeRewards(){
+        try{
+            let rewards=[]
+            let wallets=[]
+            let totalRefs=0
+            for(let i=0;i<leaderboard?.length;i++){
+                totalRefs+=leaderboard[i]?.referrals
+            }
+            if(totalRefs==0){
+                toast.error("No participant has any referrals")
+                return
+            }
+            for(let i=0;i<leaderboard?.length;i++){
+                if(leaderboard[i]?.referrals==0){
+                    continue
+                }
+                let amount=parseFloat((leaderboard[i]?.referrals/totalRefs)*(potBalance-1)).toFixed(2)
+                console.log(amount,leaderboard[i]?.referrals/totalRefs,potBalance-1)
+                rewards.push(toNano(amount.toString()))
+                wallets.push(leaderboard[i]?.wallet)
+            }
+            if(wallets?.length==0){
+                toast.error("No valid addresses to reward")
+                return
+            }
+            // rewards.push(toNano("0.2"))
+            // rewards.push(toNano("0.3"))
+            // rewards.push(toNano("0.4"))
+
+
+            // wallets.push(wallet?.toString())
+            // wallets.push(wallet?.toString())
+            // wallets.push(wallet?.toString())
+
+            distributeReward(wallets,rewards,BigInt(wallets?.length))
+            // for(let j=0;j<leaderboard?.length;j++){
+            //     // rewards
+
+            // }
+        }catch(err){
+            console.log(err)
+        }
+    }
 
     async function getRankings(){
         try{
@@ -44,7 +102,10 @@ const Leaderboard = () => {
         }
         getRankings()
     },[])
-    const arr=new Array(10).fill(1)
+    // const arr=new Array(10).fill(1)
+    useEffect(()=>{
+        getPotBalance()
+    },[balance])
 
   return (
     <div className='leaderboard-page'>
@@ -88,7 +149,9 @@ const Leaderboard = () => {
         </div>
         {
             tonAuth?.user?.isAdmin?
-            <></>
+            <p className="leaderboard-btm-text cursor-pointer" onClick={distributeRewards}>
+                Distribute rewards from pool
+            </p>
             :
             <p className="leaderboard-btm-text">
             {

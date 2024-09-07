@@ -6,12 +6,17 @@ import '../components/referralApplications/referralApplications.css'
 import { useTonConnect } from '../utils/useTonConnect'
 import axios from 'axios'
 import { TiStarOutline } from 'react-icons/ti'
+import { useBondexContract } from '../utils/useBondexContract'
+import { toNano } from 'ton-core'
+import toast from 'react-hot-toast'
 
 const ReferralApplications = () => {
     const {wallet}=useTonConnect()
     const nav=useNavigate()
     const tonAuth=useContext(TonContext)
     const [refList,setRefList]=useState([])
+    const [bounty,setBounty]=useState(0)
+    const {returnFee}=useBondexContract()
 
     async function getCandidates(){
         try{
@@ -26,6 +31,34 @@ const ReferralApplications = () => {
             console.log(err)
         }
     }
+    async function getCurrentBounty(){
+        try {
+            let resp=await axios.get(`${baseURL}/getBounties?wallet=${wallet?.toString()}`)
+            console.log(resp?.data)
+            if(resp?.data?.message=='Something went wrong'){
+                console.log('err fetching current bounty')
+                return
+            }
+            setBounty(resp?.data?.count)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    async function removeCurrentBounty(){
+        try {
+            let resp=await axios.patch(`${baseURL}/removeBounty?wallet=${wallet?.toString()}`)
+            console.log(resp?.data)
+            if(resp?.data?.message=='Something went wrong'){
+                console.log('err fetching current bounty')
+                return
+            }
+            toast.success("Please complete transaction to redeem bounty")
+            setBounty(0)
+        } catch (err) {
+            setBounty(0)
+            console.log(err)
+        }
+    }
 
     useEffect(()=>{
 
@@ -34,6 +67,7 @@ const ReferralApplications = () => {
         }
           
         getCandidates()
+        getCurrentBounty()
     },[])
 
   return (
@@ -42,6 +76,17 @@ const ReferralApplications = () => {
         <LuArrowLeft className='back-icon' onClick={()=>nav('/profile')}/>
         <div className="ref-app-info-main-cont">
             <h1 className="rai-title">Referral Info.</h1>
+            {
+                bounty>0?
+                <p className="rai-bounty-count" onClick={async()=>{
+                    removeCurrentBounty()
+                    returnFee(toNano(bounty),wallet)
+                }}>
+                    Redeem All {` ${bounty} `} Ton
+                </p>
+                :
+                <></>
+            }
             
             {
                 refList?.map((ref,index)=>(
@@ -67,6 +112,7 @@ const ReferralApplications = () => {
                     </div>
                 ))
             }
+            
             <p className="rai-non-link" onClick={()=>nav('/userActiveRef')}>Non-Redeemed</p>
         </div>
         <img src="coinBtm.png" alt="coin bottom" className="coin-btm" />

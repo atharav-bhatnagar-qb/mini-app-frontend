@@ -90,7 +90,12 @@ const Intro = () => {
             // onClick={()=>{
             //     document.getElementById('TonConnectButton').click()
             // }}
-            onClick={open}
+            onClick={async()=>{
+                connected==true?
+                open()
+                :
+                await tonConnectUI.disconnect()
+            }}
             >
                 {
                     connected==true?

@@ -42,6 +42,9 @@ const ReferralList = () => {
         getLinks()
         console.log(wallet)
     },[])
+    useEffect(()=>{
+        console.log("reflist :",refList)
+    },[refList])
 
   return (
     <div className='page'>

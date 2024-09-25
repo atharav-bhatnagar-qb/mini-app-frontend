@@ -96,12 +96,26 @@ const JobListing = () => {
             console.log(err)
         }
     }
-    useEffect(()=>{
+    async function testAPI(){
+        console.log("testing api")
+        try{
+            let res=await axios.get("https://bdx-ton-prod-f8aghzdngbenb9e8.eastus-01.azurewebsites.net/Jobs/get-featured")
+            console.log("featured jobs api : ",res)
+            let res2=await axios.get("https://bdx-ton-prod-f8aghzdngbenb9e8.eastus-01.azurewebsites.net/Jobs/all?page=1&count=10")
+            console.log("all jobs api : ",res2)
+        }catch(err){
+            console.log("api testing error : ",err)
+        }
+    }
 
+    useEffect(()=>{
+        testAPI()
         if(tonAuth?.user==undefined){
             nav('/')
         }
-
+        if(tonAuth?.user?.isAdmin==true){
+            nav('/adminJobListings')
+        }
         getFeaturedJobs()
         getUnFeaturedJobs()
     },[])

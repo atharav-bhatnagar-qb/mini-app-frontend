@@ -20,6 +20,7 @@ import ReferralApplications from './pages/ReferralApplications'
 import JobListingAdmin from './pages/JobListingAdmin'
 import EditJob from './pages/EditJob'
 import Leaderboard from './pages/Leaderboard'
+import AdminJobDescription from './pages/AdminJobDescription'
 window.Buffer = window.Buffer || require("buffer").Buffer; 
 
 
@@ -48,6 +49,7 @@ const App = () => {
         <Route path='/adminJobListings' element={<JobListingAdmin/>}/>
         <Route path='/adminEditJob' element={<EditJob/>}/>
         <Route path='/leaderboard' element={<Leaderboard/>}/>
+        <Route path='/adminJobDetails' element={<AdminJobDescription/>}/>
       </Routes>
       <Toaster/>
     </Router>

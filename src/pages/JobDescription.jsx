@@ -23,6 +23,20 @@ const JobDescription = () => {
     const TON_DECIMALS=9
     const receiver="0QCueun5yIwfsyNDXMe2UQR25WJK5MOYDbkc-elqXeVoU2Ka"
     const {generateRef}=useBondexContract()
+    const [createdAt,setCreatedAt]=useState("")
+
+    const monthArr=["January","Febraury","March","April","May","June","July","August","September","October","November","December"]
+
+    function setDate(){
+        try{
+            let date=new Date(tonAuth?.job?.createdAt)
+            console.log(date)
+            setCreatedAt(`${date.getDate()} ${monthArr[date.getMonth()]} ${date.getFullYear()}`)
+        }catch(err){
+            console.log(err)
+        }
+    }
+
   
     async function getAllreferrals(){
         try{
@@ -84,6 +98,7 @@ const JobDescription = () => {
         }
           
         getAllreferrals()
+        setDate()
     },[])
 
   return (
@@ -140,7 +155,7 @@ const JobDescription = () => {
                 <p className="jd-skill-tag">51-100 employees</p>
             </div>
             <p className="jd-small-text">
-                posted 2 months ago
+                posted on {createdAt}
             </p>
         </div>
         {

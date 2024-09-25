@@ -111,3 +111,6 @@
 .ajc-feature-star{
     @apply text-black absolute text-2xl right-4
 }
+.ajc-view-detail-text{
+    @apply text-black absolute text-sm right-4 bottom-4 underline
+}

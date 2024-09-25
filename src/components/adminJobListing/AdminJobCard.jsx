@@ -12,10 +12,7 @@ const AdminJobCard = ({job,nav,isEditing,deleteJob,changeFeatureStatus}) => {
     const tonAuth=useContext(TonContext)
 
   return (
-    <div className='ajl-job-card' onClick={()=>{
-        // tonAuth?.setJob(job)
-        // nav('/jobDetails')
-    }}>
+    <div className='ajl-job-card'>
         <div className="ajc-bounty-cont">
             <AiFillDollarCircle className='ajc-bounty-icon'/>
             <p className="ajc-bounty-text"> $ {job?.bounty} bounty prize</p>
@@ -23,7 +20,13 @@ const AdminJobCard = ({job,nav,isEditing,deleteJob,changeFeatureStatus}) => {
         <div className="ajc-main-card">
             {
                 !isEditing?
-                <></>
+                <p className='ajc-view-detail-text' onClick={()=>{
+                        tonAuth?.setJob(job)
+                        nav('/adminJobDetails')
+                    }}
+                >
+                    View Details
+                </p>
                 :
                 !job?.isFeatured?
                 <IoStarOutline className='ajc-feature-star' onClick={()=>{
